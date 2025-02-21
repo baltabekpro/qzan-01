@@ -1,9 +1,8 @@
-
 import { Bell, Plus, Search, User } from "lucide-react";
 
 export function Header() {
   return (
-    <header className="h-16 border-b border-gray-200 bg-white">
+    <header className="h-16">
       <div className="h-full flex items-center justify-between px-6">
         <div className="flex items-center space-x-8">
           <div className="flex items-center space-x-2">
@@ -14,14 +13,14 @@ export function Header() {
           </div>
         </div>
         <div className="flex items-center space-x-4">
-          <div className="relative">
+            <div className="relative">
             <input
               type="text"
               placeholder="поиск"
-              className="pl-10 pr-4 py-2 border border-gray-200 rounded-lg w-64 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              className="pl-10 pr-4 py-2 border border-gray-200 rounded-[33px] w-64 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
             />
             <Search className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" />
-          </div>
+            </div>
           <button className="p-2 hover:bg-gray-100 rounded-full relative">
             <Bell className="w-5 h-5" />
             <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>

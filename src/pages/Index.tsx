@@ -1,61 +1,52 @@
 import { AppSidebar } from "@/components/AppSidebar";
 import { Header } from "@/components/Header";
 import { UserProfile } from "@/components/UserProfile";
-import { 
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle 
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FileText, Download, MessageSquare } from "lucide-react";
-
 export default function Index() {
-  const notifications = [
-    {
-      id: 1,
-      title: "Уведомление о регистрации бизнеса",
-      description: "Ожидается для реализации все до 31/01/2024",
-      isNew: true,
-    },
-    {
-      id: 2,
-      title: "Уведомление об изменении в правилах..",
-      description: "Ожидается для реализации все до 31/01/2024",
-      isNew: true,
-    },
-    {
-      id: 3,
-      title: "Сообщение от НУК о регистрации потопа в..",
-      description: "Ожидается для реализации все до 31/01/2024",
-      isNew: false,
-    },
-  ];
-
-  const documents = [
-    { id: 1, name: "Заявление.pdf", size: "245 KB" },
-    { id: 2, name: "Разрешение на выставление.pdf", size: "1.2 MB" },
-    { id: 3, name: "Заявление на участия.pdf", size: "890 KB" },
-  ];
-
-  const requests = [
-    {
-      id: 1,
-      title: "Запрос на получение лицензии/разрешения",
-      status: "В процессе",
-      date: "05.02.2024",
-      time: "10:35",
-    },
-    {
-      id: 2,
-      title: "Запрос на изменение юридического адреса",
-      status: "Новый",
-      date: "05.02.2024",
-      time: "10:35",
-    }
-  ];
-
-  return (
-    <div className="min-h-screen bg-[#F5F7FA] flex">
+  const notifications = [{
+    id: 1,
+    title: "Уведомление о регистрации бизнеса",
+    description: "Ожидается для реализации все до 31/01/2024",
+    isNew: true
+  }, {
+    id: 2,
+    title: "Уведомление об изменении в правилах..",
+    description: "Ожидается для реализации все до 31/01/2024",
+    isNew: true
+  }, {
+    id: 3,
+    title: "Сообщение от НУК о регистрации потопа в..",
+    description: "Ожидается для реализации все до 31/01/2024",
+    isNew: false
+  }];
+  const documents = [{
+    id: 1,
+    name: "Заявление.pdf",
+    size: "245 KB"
+  }, {
+    id: 2,
+    name: "Разрешение на выставление.pdf",
+    size: "1.2 MB"
+  }, {
+    id: 3,
+    name: "Заявление на участия.pdf",
+    size: "890 KB"
+  }];
+  const requests = [{
+    id: 1,
+    title: "Запрос на получение лицензии/разрешения",
+    status: "В процессе",
+    date: "05.02.2024",
+    time: "10:35"
+  }, {
+    id: 2,
+    title: "Запрос на изменение юридического адреса",
+    status: "Новый",
+    date: "05.02.2024",
+    time: "10:35"
+  }];
+  return <div className="min-h-screen bg-[#F5F7FA] flex">
       <AppSidebar />
       <div className="flex-1">
         <Header />
@@ -94,20 +85,15 @@ export default function Index() {
                     </div>
                     <div className="space-y-4 relative">
                       <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-200 z-0" />
-                      {requests.map((request) => (
-                        <div
-                          key={request.id}
-                          className="relative z-10 flex items-start pl-8"
-                        >
-                          <div className="absolute left-3 -translate-x-1/2 w-3 h-3 rounded-full border-2 border-[#4338ca] bg-white" />
+                      {requests.map(request => <div key={request.id} className="relative z-10 flex items-start pl-8">
+                          <div className="absolute left-3 -translate-x-1/2 w-3 h-3 rounded-full border-2 border-[#4338ca] bg-white my-[34px] mx-[5px] py-[4px] px-[4px]" />
                           <div className="flex-1 p-4 bg-white border border-gray-100 rounded-lg hover:border-[#4338ca] transition-colors">
                             <h4 className="font-medium mb-1">{request.title}</h4>
                             <div className="text-sm text-gray-500">
                               {request.date} {request.time}
                             </div>
                           </div>
-                        </div>
-                      ))}
+                        </div>)}
                     </div>
                   </div>
                 </div>
@@ -123,24 +109,13 @@ export default function Index() {
                   </CardHeader>
                   <CardContent className="p-0">
                     <div>
-                      {notifications.map((notification) => (
-                        <div
-                          key={notification.id}
-                          className="flex items-start space-x-3 p-4 bg-gray-50 border-b border-gray-100 last:border-b-0"
-                        >
-                          <MessageSquare 
-                            className={`w-5 h-5 mt-0.5 ${
-                              notification.isNew 
-                                ? 'text-[#4338ca]' 
-                                : 'text-gray-400'
-                            }`} 
-                          />
+                      {notifications.map(notification => <div key={notification.id} className="flex items-start space-x-3 p-4 bg-gray-50 border-b border-gray-100 last:border-b-0">
+                          <MessageSquare className={`w-5 h-5 mt-0.5 ${notification.isNew ? 'text-[#4338ca]' : 'text-gray-400'}`} />
                           <div className="min-w-0">
                             <p className="font-medium truncate">{notification.title}</p>
                             <p className="text-sm text-gray-500 mt-0.5">{notification.description}</p>
                           </div>
-                        </div>
-                      ))}
+                        </div>)}
                     </div>
                   </CardContent>
                 </Card>
@@ -156,11 +131,7 @@ export default function Index() {
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-3">
-                      {documents.map((doc) => (
-                        <div
-                          key={doc.id}
-                          className="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg transition-colors"
-                        >
+                      {documents.map(doc => <div key={doc.id} className="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg transition-colors">
                           <div className="flex items-center space-x-3">
                             <FileText className="w-5 h-5 text-gray-400" />
                             <div>
@@ -171,8 +142,7 @@ export default function Index() {
                           <button className="p-2 hover:bg-gray-100 rounded-lg">
                             <Download className="w-5 h-5 text-gray-500" />
                           </button>
-                        </div>
-                      ))}
+                        </div>)}
                     </div>
                   </CardContent>
                 </Card>
@@ -181,6 +151,5 @@ export default function Index() {
           </div>
         </main>
       </div>
-    </div>
-  );
+    </div>;
 }

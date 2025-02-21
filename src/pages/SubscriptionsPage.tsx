@@ -3,6 +3,7 @@ import { Header } from "@/components/Header";
 import { AppSidebar } from "@/components/AppSidebar";
 import { SubscriptionTable } from "@/components/subscriptions/SubscriptionTable";
 import { PaymentHistory } from "@/components/subscriptions/PaymentHistory";
+import { PaymentCards } from "@/components/subscriptions/PaymentCards";
 
 export default function SubscriptionsPage() {
   return (
@@ -26,9 +27,14 @@ export default function SubscriptionsPage() {
 
           {/* Main content area */}
           <div className="flex-1 overflow-y-auto px-4 sm:px-[59px] py-[40px]">
-            <div className="max-w-[840px] space-y-6">
-              <SubscriptionTable />
-              <PaymentHistory />
+            <div className="grid grid-cols-1 xl:grid-cols-[840px,1fr] gap-6">
+              <div className="space-y-6">
+                <SubscriptionTable />
+                <PaymentHistory />
+              </div>
+              <div className="pt-[40px]">
+                <PaymentCards />
+              </div>
             </div>
           </div>
         </div>

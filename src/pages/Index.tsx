@@ -2,7 +2,7 @@ import { AppSidebar } from "@/components/AppSidebar";
 import { Header } from "@/components/Header";
 import { UserProfile } from "@/components/UserProfile";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { FileText, Download, MessageSquare, Copy, Plus } from "lucide-react";
+import { FileText, Download, MessageSquare, Copy, Plus, Check } from "lucide-react";
 import { useState } from "react";
 
 export default function Index() {
@@ -56,6 +56,19 @@ export default function Index() {
     size: "890 KB"
   }];
 
+  const historyRequests = [{
+    id: 1,
+    title: "Запрос на выписку от ЕГРЮЛ",
+    date: "05.02.2025",
+    time: "10:35",
+    status: "исполнено",
+    steps: [
+      { text: "Получено ЕГРЮЛ РК", completed: true },
+      { text: "Направлено в отдел кадров", completed: true },
+      { text: "Готово к скачиванию", completed: true }
+    ]
+  }];
+
   const requests = [{
     id: 1,
     title: "Запрос на получение лицензии/разрешения",
@@ -69,6 +82,60 @@ export default function Index() {
     date: "05.02.2024",
     time: "10:35"
   }];
+
+  const renderContent = () => {
+    switch (activeTab) {
+      case 'history':
+        return (
+          <div className="space-y-4">
+            {historyRequests.map((request) => (
+              <div key={request.id} className="relative bg-white rounded-lg shadow-sm p-6 transition-all hover:shadow-md">
+                <div className="flex justify-between items-start">
+                  <div className="space-y-4">
+                    <div className="space-y-2">
+                      <h4 className="text-sm font-medium text-black">{request.title}</h4>
+                      <p className="text-xs text-[#202295]">{request.date} {request.time}</p>
+                    </div>
+                    
+                    <div className="relative pl-5 space-y-5">
+                      <div className="absolute left-[3px] top-0 bottom-0 w-0.5 bg-[#60D54E]/20" />
+                      {request.steps.map((step, index) => (
+                        <div key={index} className="flex items-center space-x-4">
+                          <div className="absolute left-0 w-2 h-2 rounded-full bg-[#60D54E] -translate-x-[2px]" />
+                          <span className="text-xs text-[#B3B3B3]">{step.text}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center space-x-2 text-xs text-[#202295]">
+                    <Check className="w-4 h-4" />
+                    <span>{request.status}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        );
+      default:
+        return (
+          <div className="space-y-4 relative">
+            <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-200 z-0" />
+            {requests.map(request => (
+              <div key={request.id} className="relative z-10 flex items-start pl-8">
+                <div className="absolute left-3 -translate-x-1/2 w-3 h-3 rounded-full border-2 border-[#4338ca] bg-white my-[34px] mx-[5px] py-[4px] px-[4px]" />
+                <div className="flex-1 p-4 bg-white border border-gray-100 rounded-lg hover:border-[#4338ca] transition-colors">
+                  <h4 className="font-medium mb-1">{request.title}</h4>
+                  <div className="text-sm text-gray-500">
+                    {request.date} {request.time}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        );
+    }
+  };
 
   return (
     <div className="min-h-screen w-screen bg-[#F5F7FA] overflow-x-hidden">
@@ -143,18 +210,7 @@ export default function Index() {
                         перейти к запросу
                       </button>
                     </div>
-                    <div className="space-y-4 relative">
-                      <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-200 z-0" />
-                      {requests.map(request => <div key={request.id} className="relative z-10 flex items-start pl-8">
-                          <div className="absolute left-3 -translate-x-1/2 w-3 h-3 rounded-full border-2 border-[#4338ca] bg-white my-[34px] mx-[5px] py-[4px] px-[4px]" />
-                          <div className="flex-1 p-4 bg-white border border-gray-100 rounded-lg hover:border-[#4338ca] transition-colors">
-                            <h4 className="font-medium mb-1">{request.title}</h4>
-                            <div className="text-sm text-gray-500">
-                              {request.date} {request.time}
-                            </div>
-                          </div>
-                        </div>)}
-                    </div>
+                    {renderContent()}
                   </div>
                 </div>
               </div>

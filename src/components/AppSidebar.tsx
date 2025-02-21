@@ -1,17 +1,16 @@
 
 import { 
-  Bell, 
   User, 
-  FileText, 
+  MessageSquare,
+  Lock, 
   Clock, 
-  CreditCard, 
-  Lock,
+  CreditCard,
   Menu
 } from "lucide-react";
 
 const menuItems = [
   { icon: User, text: "Личный кабинет", href: "#", active: true },
-  { icon: Bell, text: "Уведомления", href: "#" },
+  { icon: MessageSquare, text: "Уведомления", href: "#" },
   { icon: Lock, text: "Конфиденциальность", href: "#" },
   { icon: Clock, text: "История запросов", href: "#" },
   { icon: CreditCard, text: "Подписки и платежи", href: "#" },

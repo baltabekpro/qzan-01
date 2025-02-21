@@ -17,17 +17,19 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/subscriptions" element={<SubscriptionsPage />} />
-            <Route path="/ai-chat" element={<AIChatPage />} />
-            <Route path="/test-chat" element={<TestChatPage />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
+        <div className="min-h-screen w-full overflow-x-hidden bg-[#F5F7FA] fixed">
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/subscriptions" element={<SubscriptionsPage />} />
+              <Route path="/ai-chat" element={<AIChatPage />} />
+              <Route path="/test-chat" element={<TestChatPage />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </div>
       </TooltipProvider>
     </QueryClientProvider>
   );

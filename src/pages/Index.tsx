@@ -4,8 +4,6 @@ import { UserProfile } from "@/components/UserProfile";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FileText, Download, MessageSquare, Plus } from "lucide-react";
 import { RequestSection } from "@/components/requests/RequestSection";
-import { SubscriptionTable } from "@/components/subscriptions/SubscriptionTable";
-import { PaymentHistory } from "@/components/subscriptions/PaymentHistory";
 
 export default function Index() {
   const notifications = [{
@@ -87,8 +85,6 @@ export default function Index() {
               <div className="space-y-6">
                 <UserProfile />
                 <RequestSection />
-                <SubscriptionTable />
-                <PaymentHistory />
               </div>
 
               <div className="space-y-6">

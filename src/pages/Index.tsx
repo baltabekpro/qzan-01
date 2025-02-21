@@ -2,7 +2,7 @@ import { AppSidebar } from "@/components/AppSidebar";
 import { Header } from "@/components/Header";
 import { UserProfile } from "@/components/UserProfile";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { FileText, Download, MessageSquare } from "lucide-react";
+import { FileText, Download, MessageSquare, Copy } from "lucide-react";
 export default function Index() {
   const notifications = [{
     id: 1,
@@ -100,48 +100,31 @@ export default function Index() {
               </div>
 
               <div className="space-y-6">
-                <Card className="overflow-hidden">
-                  <CardHeader className="px-6 py-4">
-                    <CardTitle className="text-lg font-semibold flex items-center justify-between">
-                      Уведомления
-                      <span className="text-sm font-normal text-gray-500">смотреть все</span>
+                <Card className="bg-white shadow-sm">
+                  <CardHeader className="px-6 py-4 border-b border-gray-100">
+                    <CardTitle className="text-base font-semibold flex items-center justify-between">
+                      Документы/Файлы
+                      <button className="flex items-center text-sm font-normal text-[#4338ca] hover:text-[#3730a3]">
+                        <span className="mr-1">Добавить</span>
+                        <span className="text-lg">+</span>
+                      </button>
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="p-0">
                     <div>
-                      {notifications.map(notification => <div key={notification.id} className="flex items-start space-x-3 p-4 bg-gray-50 border-b border-gray-100 last:border-b-0">
-                          <MessageSquare className={`w-5 h-5 mt-0.5 ${notification.isNew ? 'text-[#4338ca]' : 'text-gray-400'}`} />
-                          <div className="min-w-0">
-                            <p className="font-medium truncate">{notification.title}</p>
-                            <p className="text-sm text-gray-500 mt-0.5">{notification.description}</p>
-                          </div>
-                        </div>)}
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="text-lg font-semibold flex items-center justify-between">
-                      Документы/Файлы
-                      <button className="text-sm font-normal text-[#4338ca] hover:text-[#3730a3]">
-                        Добавить
-                      </button>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-3">
-                      {documents.map(doc => <div key={doc.id} className="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg transition-colors">
+                      {documents.map((doc, index) => <div key={doc.id} className={`flex items-center justify-between px-6 py-4 ${index !== documents.length - 1 ? 'border-b border-gray-100' : ''}`}>
                           <div className="flex items-center space-x-3">
-                            <FileText className="w-5 h-5 text-gray-400" />
-                            <div>
-                              <p className="font-medium">{doc.name}</p>
-                              <p className="text-sm text-gray-500">{doc.size}</p>
-                            </div>
+                            <FileText className="w-5 h-5 text-[#4338ca]" />
+                            <span className="text-sm text-gray-900">{doc.name}</span>
                           </div>
-                          <button className="p-2 hover:bg-gray-100 rounded-lg">
-                            <Download className="w-5 h-5 text-gray-500" />
-                          </button>
+                          <div className="flex items-center space-x-2">
+                            <button className="p-2 hover:bg-gray-50 rounded-lg transition-colors">
+                              <Copy className="w-4 h-4 text-gray-400" />
+                            </button>
+                            <button className="p-2 hover:bg-gray-50 rounded-lg transition-colors">
+                              <Download className="w-4 h-4 text-gray-400" />
+                            </button>
+                          </div>
                         </div>)}
                     </div>
                   </CardContent>

@@ -3,8 +3,10 @@ import { Header } from "@/components/Header";
 import { UserProfile } from "@/components/UserProfile";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FileText, Download, MessageSquare, Copy, Plus } from "lucide-react";
+import { useState } from "react";
 
 export default function Index() {
+  const [activeTab, setActiveTab] = useState<'current' | 'past' | 'history'>('current');
   const notifications = [{
     id: 1,
     title: "Уведомление о регистрации бизнеса",
@@ -102,13 +104,34 @@ export default function Index() {
                 <div className="bg-white rounded-lg shadow-sm">
                   <div className="border-b border-gray-100">
                     <div className="flex space-x-6 px-6">
-                      <button className="py-4 font-medium text-[#4338ca] border-b-2 border-[#4338ca]">
+                      <button 
+                        className={`py-4 font-medium transition-colors duration-200 ${
+                          activeTab === 'current' 
+                            ? 'text-[#4338ca] border-b-2 border-[#4338ca]' 
+                            : 'text-gray-500 hover:text-gray-700'
+                        }`}
+                        onClick={() => setActiveTab('current')}
+                      >
                         Текущие запросы
                       </button>
-                      <button className="py-4 text-gray-500">
+                      <button 
+                        className={`py-4 font-medium transition-colors duration-200 ${
+                          activeTab === 'past' 
+                            ? 'text-[#4338ca] border-b-2 border-[#4338ca]' 
+                            : 'text-gray-500 hover:text-gray-700'
+                        }`}
+                        onClick={() => setActiveTab('past')}
+                      >
                         Прошлые запросы
                       </button>
-                      <button className="py-4 text-gray-500">
+                      <button 
+                        className={`py-4 font-medium transition-colors duration-200 ${
+                          activeTab === 'history' 
+                            ? 'text-[#4338ca] border-b-2 border-[#4338ca]' 
+                            : 'text-gray-500 hover:text-gray-700'
+                        }`}
+                        onClick={() => setActiveTab('history')}
+                      >
                         История запросов
                       </button>
                     </div>

@@ -1,4 +1,5 @@
 
+import { PenLine } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function UserProfile() {
@@ -12,7 +13,7 @@ export function UserProfile() {
             className="w-24 h-24 rounded-full object-cover"
           />
           <button className="absolute bottom-0 right-0 bg-white p-1 rounded-full border border-gray-200 shadow-sm">
-            <Pencil className="w-4 h-4 text-gray-500" />
+            <PenLine className="w-4 h-4 text-gray-500" />
           </button>
         </div>
         <div className="flex-1">

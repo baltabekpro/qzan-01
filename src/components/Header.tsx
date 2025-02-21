@@ -1,5 +1,5 @@
 
-import { Bell, Plus, Search } from "lucide-react";
+import { Bell, Plus, Search, User } from "lucide-react";
 
 export function Header() {
   return (

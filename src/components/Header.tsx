@@ -6,10 +6,10 @@ export function Header() {
       <div className="h-full flex items-center justify-between px-[59px]">
         <div className="flex items-center space-x-8">
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-[#202295] rounded-full flex items-center justify-center">
-              <User className="w-5 h-5 text-white" />
+            <div className="w-12 h-12 flex items-center justify-center">
+              <User className="w-8 h-8 text-[#202295]" />
             </div>
-            <span className="text-[#202295] font-medium">Иван Иванов</span>
+            <span className="text-[#202295] font-medium text-2xl">Иван Иванов</span>
           </div>
         </div>
         <div className="flex items-center space-x-4">

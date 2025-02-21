@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { MessageSquare, User, Lock, Clock, CreditCard, File, Heart, Download, Plus, Robot } from "lucide-react";
+import { MessageSquare, User, Lock, Clock, CreditCard, File, Heart, Download, Plus, Bot } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useLocation, Link } from "react-router-dom";
 
@@ -12,7 +12,7 @@ const menuItems = [
     className: "text-[#9898BF] font-light" 
   },
   { 
-    icon: Robot,
+    icon: Bot,
     text: "Чат с ИИ",
     href: "/ai-chat"
   },

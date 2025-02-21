@@ -1,15 +1,46 @@
 
 import { useState } from "react";
-import { User, MessageSquare, Lock, Clock, CreditCard, File, Heart, Download } from "lucide-react";
+import { MessageSquare, User, Lock, Clock, CreditCard, File, Heart, Download, Plus, Robot } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useLocation, Link } from "react-router-dom";
 
 const menuItems = [
-  { icon: User, text: "Личный кабинет", href: "/" },
-  { icon: MessageSquare, text: "Уведомления", href: "/notifications" },
-  { icon: Lock, text: "Конфиденциальность", href: "/privacy" },
-  { icon: Clock, text: "История запросов", href: "/requests" },
-  { icon: CreditCard, text: "Подписки и платежи", href: "/subscriptions" },
+  { 
+    icon: Plus,
+    text: "Новый чат",
+    href: "/chat",
+    className: "text-[#9898BF] font-light" 
+  },
+  { 
+    icon: Robot,
+    text: "Чат с ИИ",
+    href: "/ai-chat"
+  },
+  { 
+    icon: Clock,
+    text: "История запросов",
+    href: "/requests" 
+  },
+  { 
+    icon: User,
+    text: "Личный кабинет",
+    href: "/" 
+  },
+  { 
+    icon: MessageSquare,
+    text: "Уведомления",
+    href: "/notifications" 
+  },
+  { 
+    icon: Lock,
+    text: "Конфиденциальность",
+    href: "/privacy" 
+  },
+  { 
+    icon: CreditCard,
+    text: "Подписки и платежи",
+    href: "/subscriptions" 
+  },
 ];
 
 const documentItems = [
@@ -67,7 +98,8 @@ export function AppSidebar() {
             className={cn(
               "h-[45px] flex items-center px-5 hover:bg-gray-50 cursor-pointer group border-l-4 border-transparent",
               !isMenuOpen && "px-2 justify-center",
-              location.pathname === item.href && "bg-[#202295] border-white"
+              location.pathname === item.href && "bg-[#202295] border-white",
+              item.className
             )}
           >
             <item.icon className={cn(
@@ -77,7 +109,7 @@ export function AppSidebar() {
             <span className={cn(
               "ml-3 text-[16px] group-hover:text-[#202295] transition-opacity duration-300",
               !isMenuOpen && "opacity-0 w-0 ml-0",
-              location.pathname === item.href ? "text-white" : "text-[#000000]"
+              location.pathname === item.href ? "text-white" : item.className || "text-[#000000]"
             )}>
               {item.text}
             </span>

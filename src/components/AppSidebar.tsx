@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { User, MessageSquare, Lock, Clock, CreditCard } from "lucide-react";
+import { User, MessageSquare, Lock, Clock, CreditCard, File, Heart, Download } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useLocation, Link } from "react-router-dom";
 
@@ -10,6 +10,13 @@ const menuItems = [
   { icon: Lock, text: "Конфиденциальность", href: "/privacy" },
   { icon: Clock, text: "История запросов", href: "/requests" },
   { icon: CreditCard, text: "Подписки и платежи", href: "/subscriptions" },
+];
+
+const documentItems = [
+  { text: "Договор конфиденциальности", href: "/docs/confidentiality" },
+  { text: "Заявление на официальное раз", href: "/docs/official-statement" },
+  { text: "Список требуемых документов", href: "/docs/required-docs" },
+  { text: "Лист ожидания для ИП", href: "/docs/waiting-list" },
 ];
 
 export function AppSidebar() {
@@ -77,6 +84,43 @@ export function AppSidebar() {
           </Link>
         ))}
       </nav>
+
+      {/* Documents Section */}
+      <div className="mt-12">
+        <div className={cn(
+          "flex items-center px-5 mb-4",
+          !isMenuOpen && "px-2 justify-center"
+        )}>
+          <File className="w-[25px] h-[25px] text-[#000000]" />
+          <span className={cn(
+            "ml-3 text-[20px] font-semibold text-[#000000]",
+            !isMenuOpen && "opacity-0 w-0 ml-0"
+          )}>
+            Документы/Файлы
+          </span>
+        </div>
+
+        {documentItems.map((item, index) => (
+          <Link
+            key={index}
+            to={item.href}
+            className="h-[45px] flex items-center px-5 hover:bg-gray-50 cursor-pointer group relative"
+          >
+            <span className={cn(
+              "text-[17px] text-[#000000]",
+              !isMenuOpen && "opacity-0"
+            )}>
+              {item.text}
+            </span>
+            {isMenuOpen && (
+              <div className="absolute right-5 flex items-center space-x-2">
+                <Heart className="w-[18px] h-[18px] text-[#B3B3B3] hover:text-[#202295]" />
+                <Download className="w-[18px] h-[18px] text-[#B3B3B3] hover:text-[#202295]" />
+              </div>
+            )}
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }

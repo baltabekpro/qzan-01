@@ -55,15 +55,15 @@ export default function Index() {
   }];
 
   return (
-    <div className="min-h-screen w-screen bg-[#F5F7FA] overflow-x-hidden">
-      <div className="relative mx-auto max-w-[1920px] min-h-screen">
+    <div className="h-screen w-screen overflow-hidden bg-[#F5F7FA]">
+      <div className="relative h-full max-w-[1920px] mx-auto">
         {/* Sidebar */}
         <div className="fixed left-0 top-0 h-full">
           <AppSidebar />
         </div>
 
         {/* Main Content */}
-        <div className="ml-[361px]">
+        <div className="ml-[361px] h-screen overflow-y-auto">
           <Header />
           
           {/* Breadcrumb with exact positioning */}
@@ -80,7 +80,7 @@ export default function Index() {
           </div>
 
           {/* Main content area */}
-          <div className="px-4 sm:px-[59px] py-[40px]">
+          <div className="px-4 sm:px-[59px] py-[40px] h-[calc(100vh-124px)] overflow-y-auto">
             <div className="grid grid-cols-1 xl:grid-cols-[840px,1fr] gap-6">
               <div className="space-y-6">
                 <UserProfile />

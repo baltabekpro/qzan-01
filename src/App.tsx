@@ -17,7 +17,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <div className="min-h-screen w-full overflow-x-hidden bg-[#F5F7FA] fixed">
+        <div className="h-screen w-screen overflow-hidden bg-[#F5F7FA]">
           <Toaster />
           <Sonner />
           <BrowserRouter>

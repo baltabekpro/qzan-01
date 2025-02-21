@@ -41,25 +41,18 @@ export default function Index() {
   const requests = [
     {
       id: 1,
-      title: "Запрос на регистрацию",
-      status: "В обработке",
-      date: "20.03.2024",
-      number: "REQ-001",
+      title: "Запрос на получение лицензии/разрешения",
+      status: "В процессе",
+      date: "05.02.2024",
+      time: "10:35",
     },
     {
       id: 2,
-      title: "Запрос на обновление данных",
-      status: "Завершен",
-      date: "19.03.2024",
-      number: "REQ-002",
-    },
-    {
-      id: 3,
-      title: "Запрос на получение документов",
+      title: "Запрос на изменение юридического адреса",
       status: "Новый",
-      date: "18.03.2024",
-      number: "REQ-003",
-    },
+      date: "05.02.2024",
+      time: "10:35",
+    }
   ];
 
   return (
@@ -79,37 +72,46 @@ export default function Index() {
               <div className="lg:col-span-2 space-y-6">
                 <UserProfile />
                 
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="text-lg font-semibold flex items-center justify-between">
-                      Запросы
-                      <button className="text-sm font-normal text-[#4338ca] hover:text-[#3730a3]">
-                        смотреть все
+                <div className="bg-white rounded-lg shadow-sm">
+                  <div className="border-b border-gray-100">
+                    <div className="flex space-x-6 px-6">
+                      <button className="py-4 font-medium text-[#4338ca] border-b-2 border-[#4338ca]">
+                        Текущие запросы
                       </button>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
+                      <button className="py-4 text-gray-500">
+                        Прошлые запросы
+                      </button>
+                      <button className="py-4 text-gray-500">
+                        История запросов
+                      </button>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-center justify-between mb-6">
+                      <h3 className="font-medium">Запросы</h3>
+                      <button className="text-sm text-[#4338ca]">
+                        перейти к запросу
+                      </button>
+                    </div>
+                    <div className="space-y-4 relative">
+                      <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-200 z-0" />
                       {requests.map((request) => (
                         <div
                           key={request.id}
-                          className="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg transition-colors border border-gray-100"
+                          className="relative z-10 flex items-start pl-8"
                         >
-                          <div className="space-y-1">
-                            <p className="font-medium">{request.title}</p>
-                            <div className="flex items-center space-x-4 text-sm text-gray-500">
-                              <span>№ {request.number}</span>
-                              <span>{request.date}</span>
+                          <div className="absolute left-3 -translate-x-1/2 w-3 h-3 rounded-full border-2 border-[#4338ca] bg-white" />
+                          <div className="flex-1 p-4 bg-white border border-gray-100 rounded-lg hover:border-[#4338ca] transition-colors">
+                            <h4 className="font-medium mb-1">{request.title}</h4>
+                            <div className="text-sm text-gray-500">
+                              {request.date} {request.time}
                             </div>
                           </div>
-                          <span className="text-sm font-medium text-[#4338ca]">
-                            {request.status}
-                          </span>
                         </div>
                       ))}
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               </div>
 
               <div className="space-y-6">

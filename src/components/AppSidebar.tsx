@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { MessageSquare, User, Lock, Clock, CreditCard, File, Heart, Download, Plus, Bot } from "lucide-react";
+import { MessageSquare, User, Lock, Clock, CreditCard, File, Heart, Download, Plus, Bot, MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useLocation, Link } from "react-router-dom";
 
@@ -15,6 +15,11 @@ const menuItems = [
     icon: Bot,
     text: "Чат с ИИ",
     href: "/ai-chat"
+  },
+  {
+    icon: MessageCircle,
+    text: "Тестовый чат",
+    href: "/test-chat"
   },
   { 
     icon: Clock,

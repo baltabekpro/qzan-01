@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import SubscriptionsPage from "./pages/SubscriptionsPage";
 import AIChatPage from "./pages/AIChatPage";
+import TestChatPage from "./pages/TestChatPage";
 import NotFound from "./pages/NotFound";
 import "./App.css";
 
@@ -23,6 +24,7 @@ function App() {
             <Route path="/" element={<Index />} />
             <Route path="/subscriptions" element={<SubscriptionsPage />} />
             <Route path="/ai-chat" element={<AIChatPage />} />
+            <Route path="/test-chat" element={<TestChatPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

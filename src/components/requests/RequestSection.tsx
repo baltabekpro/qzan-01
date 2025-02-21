@@ -3,6 +3,7 @@ import { useState } from "react";
 import { RequestTabs } from "./RequestTabs";
 import { CurrentRequests } from "./CurrentRequests";
 import { HistoryRequests } from "./HistoryRequests";
+import { HistoryRequest } from "@/types/requests";
 
 type TabType = 'current' | 'past' | 'history';
 
@@ -12,26 +13,6 @@ interface Request {
   status: string;
   date: string;
   time: string;
-}
-
-interface HistoryRequest {
-  id: number;
-  title: string;
-  date: string;
-  time: string;
-  status: string;
-  steps?: {
-    text: string;
-    completed: boolean;
-  }[];
-  chatContent?: {
-    request: string;
-    response: {
-      intro: string;
-      content: string;
-      conclusion: string;
-    };
-  };
 }
 
 export const RequestSection = () => {

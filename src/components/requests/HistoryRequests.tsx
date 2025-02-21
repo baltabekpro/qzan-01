@@ -1,27 +1,5 @@
-
 import { Check, File, Heart, Download, ThumbsUp, ThumbsDown, Copy, Volume2 } from "lucide-react";
-
-interface Step {
-  text: string;
-  completed: boolean;
-}
-
-interface HistoryRequest {
-  id: number;
-  title: string;
-  date: string;
-  time: string;
-  status: string;
-  steps: Step[];
-  chatContent?: {
-    request: string;
-    response: {
-      intro: string;
-      content: string;
-      conclusion: string;
-    };
-  };
-}
+import { HistoryRequest } from "@/types/requests";
 
 interface HistoryRequestsProps {
   requests: HistoryRequest[];
@@ -78,7 +56,7 @@ export const HistoryRequests = ({
                 </div>
               ) : (
                 <div className="relative pl-5 space-y-5">
-                  {request.steps.map((step, index) => (
+                  {request.steps?.map((step, index) => (
                     <div key={index} className="flex items-center space-x-4">
                       <div className="absolute left-0 w-2 h-2 rounded-full bg-[#60D54E] -translate-x-[2px]" />
                       <span className="text-xs text-[#B3B3B3]">{step.text}</span>

@@ -2,10 +2,10 @@ import { AppSidebar } from "@/components/AppSidebar";
 import { Header } from "@/components/Header";
 import { UserProfile } from "@/components/UserProfile";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { FileText, Download, MessageSquare, Copy, Plus, Check } from "lucide-react";
-import { useState } from "react";
+import { FileText, Download, MessageSquare, Plus } from "lucide-react";
+import { RequestSection } from "@/components/requests/RequestSection";
+
 export default function Index() {
-  const [activeTab, setActiveTab] = useState<'current' | 'past' | 'history'>('current');
   const notifications = [{
     id: 1,
     title: "Уведомление о регистрации бизнеса",
@@ -53,80 +53,9 @@ export default function Index() {
     name: "Заявление на участия.pdf",
     size: "890 KB"
   }];
-  const historyRequests = [{
-    id: 1,
-    title: "Запрос на выписку от ЕГРЮЛ",
-    date: "05.02.2025",
-    time: "10:35",
-    status: "исполнено",
-    steps: [{
-      text: "Получено ЕГРЮЛ РК",
-      completed: true
-    }, {
-      text: "Направлено в отдел кадров",
-      completed: true
-    }, {
-      text: "Готово к скачиванию",
-      completed: true
-    }]
-  }];
-  const requests = [{
-    id: 1,
-    title: "Запрос на получение лицензии/разрешения",
-    status: "В процессе",
-    date: "05.02.2024",
-    time: "10:35"
-  }, {
-    id: 2,
-    title: "Запрос на изменение юридического адреса",
-    status: "Новый",
-    date: "05.02.2024",
-    time: "10:35"
-  }];
-  const renderContent = () => {
-    switch (activeTab) {
-      case 'history':
-        return <div className="space-y-4">
-            {historyRequests.map(request => <div key={request.id} className="relative bg-white rounded-lg shadow-sm p-6 transition-all hover:shadow-md">
-                <div className="flex justify-between items-start">
-                  <div className="space-y-4">
-                    <div className="space-y-2">
-                      <h4 className="text-sm font-medium text-black">{request.title}</h4>
-                      <p className="text-xs text-[#202295]">{request.date} {request.time}</p>
-                    </div>
-                    
-                    <div className="relative pl-5 space-y-5">
-                      <div className="absolute left-[3px] top-0 bottom-0 w-0.5 bg-[#60D54E]/20 my-0 mx-0" />
-                      {request.steps.map((step, index) => <div key={index} className="flex items-center space-x-4">
-                          <div className="absolute left-0 w-2 h-2 rounded-full bg-[#60D54E] -translate-x-[2px]" />
-                          <span className="text-xs text-[#B3B3B3]">{step.text}</span>
-                        </div>)}
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center space-x-2 text-xs text-[#202295]">
-                    <Check className="w-4 h-4" />
-                    <span>{request.status}</span>
-                  </div>
-                </div>
-              </div>)}
-          </div>;
-      default:
-        return <div className="space-y-4 relative">
-            <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-200 z-0" />
-            {requests.map(request => <div key={request.id} className="relative z-10 flex items-start pl-8">
-                <div className="absolute left-3 -translate-x-1/2 w-3 h-3 rounded-full border-2 border-[#4338ca] bg-white my-[34px] mx-[5px] py-[4px] px-[4px]" />
-                <div className="flex-1 p-4 bg-white border border-gray-100 rounded-lg hover:border-[#4338ca] transition-colors">
-                  <h4 className="font-medium mb-1">{request.title}</h4>
-                  <div className="text-sm text-gray-500">
-                    {request.date} {request.time}
-                  </div>
-                </div>
-              </div>)}
-          </div>;
-    }
-  };
-  return <div className="min-h-screen w-screen bg-[#F5F7FA] overflow-x-hidden">
+
+  return (
+    <div className="min-h-screen w-screen bg-[#F5F7FA] overflow-x-hidden">
       <div className="relative mx-auto max-w-[1920px] min-h-screen">
         {/* Sidebar */}
         <div className="fixed left-0 top-0 h-full">
@@ -155,31 +84,7 @@ export default function Index() {
             <div className="grid grid-cols-1 xl:grid-cols-[840px,1fr] gap-6">
               <div className="space-y-6">
                 <UserProfile />
-                
-                <div className="bg-white rounded-lg shadow-sm">
-                  <div className="border-b border-gray-100">
-                    <div className="flex space-x-6 px-6">
-                      <button className={`py-4 font-medium transition-colors duration-200 ${activeTab === 'current' ? 'text-[#4338ca] border-b-2 border-[#4338ca]' : 'text-gray-500 hover:text-gray-700'}`} onClick={() => setActiveTab('current')}>
-                        Текущие запросы
-                      </button>
-                      <button className={`py-4 font-medium transition-colors duration-200 ${activeTab === 'past' ? 'text-[#4338ca] border-b-2 border-[#4338ca]' : 'text-gray-500 hover:text-gray-700'}`} onClick={() => setActiveTab('past')}>
-                        Прошлые запросы
-                      </button>
-                      <button className={`py-4 font-medium transition-colors duration-200 ${activeTab === 'history' ? 'text-[#4338ca] border-b-2 border-[#4338ca]' : 'text-gray-500 hover:text-gray-700'}`} onClick={() => setActiveTab('history')}>
-                        История запросов
-                      </button>
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center justify-between mb-6">
-                      <h3 className="font-medium">Запросы</h3>
-                      <button className="text-sm text-[#4338ca]">
-                        перейти к запросу
-                      </button>
-                    </div>
-                    {renderContent()}
-                  </div>
-                </div>
+                <RequestSection />
               </div>
 
               <div className="space-y-6">
@@ -252,5 +157,6 @@ export default function Index() {
           </div>
         </div>
       </div>
-    </div>;
+    </div>
+  );
 }

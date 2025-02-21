@@ -8,18 +8,31 @@ export default function Index() {
   const notifications = [{
     id: 1,
     title: "Уведомление о регистрации бизнеса",
-    description: "Ожидается для реализации все до 31/01/2024",
+    description: "Уважаемый (ая) уведомляем вас об успешном..",
     isNew: true
   }, {
     id: 2,
     title: "Уведомление об изменении в правилах..",
-    description: "Ожидается для реализации все до 31/01/2024",
+    description: "Уважаемый (ая) уведомляем вас об успешном..",
     isNew: true
   }, {
     id: 3,
-    title: "Сообщение от НУК о регистрации потопа в..",
-    description: "Ожидается для реализации все до 31/01/2024",
-    isNew: false
+    title: "Сообщение от НУК о регистрации логотипа в...",
+    description: "Уважаемый (ая) уведомляем вас об успешном..",
+    isNew: false,
+    isRead: true
+  }, {
+    id: 4,
+    title: "Успешная подача заявления в ЦОН..",
+    description: "Уважаемый (ая) уведомляем вас об успешном..",
+    isNew: false,
+    isRead: true
+  }, {
+    id: 5,
+    title: "Вы завершили регистрацию на платформе..",
+    description: "Уважаемый (ая) уведомляем вас об успешном..",
+    isNew: false,
+    isRead: true
   }];
 
   const documents = [{
@@ -105,10 +118,10 @@ export default function Index() {
 
               <div className="space-y-6">
                 <Card className="overflow-hidden">
-                  <CardHeader className="px-6 py-4">
-                    <CardTitle className="text-lg font-semibold flex items-center justify-between">
+                  <CardHeader className="px-6 py-4 border-b border-gray-100">
+                    <CardTitle className="text-lg font-medium flex items-center justify-between">
                       Уведомления
-                      <span className="text-sm font-normal text-gray-500">смотреть все</span>
+                      <span className="text-sm font-normal text-gray-400">смотреть все</span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="p-0">
@@ -116,19 +129,22 @@ export default function Index() {
                       {notifications.map(notification => (
                         <div 
                           key={notification.id} 
-                          className="flex items-start space-x-3 p-4 bg-gray-50 border-b border-gray-100 last:border-b-0"
+                          className="flex items-start space-x-3 px-6 py-4 hover:bg-gray-50 transition-colors"
                         >
                           <MessageSquare 
-                            className={`w-5 h-5 mt-0.5 ${
+                            className={`w-5 h-5 shrink-0 ${
                               notification.isNew 
                                 ? 'text-[#4338ca]' 
                                 : 'text-gray-400'
                             }`} 
                           />
-                          <div className="min-w-0">
-                            <p className="font-medium truncate">{notification.title}</p>
+                          <div className="min-w-0 flex-1">
+                            <p className="font-medium text-gray-900">{notification.title}</p>
                             <p className="text-sm text-gray-500 mt-0.5">{notification.description}</p>
                           </div>
+                          {notification.isRead && (
+                            <span className="text-xs text-gray-400 shrink-0">прочитано</span>
+                          )}
                         </div>
                       ))}
                     </div>

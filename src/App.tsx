@@ -1,15 +1,14 @@
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-
-import { AppSidebar } from "./components/AppSidebar";
-import { Header } from "./components/Header";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-import AIChatPage from "./pages/AIChatPage";
 import SubscriptionsPage from "./pages/SubscriptionsPage";
-import RequestsPage from "./pages/RequestsPage";
+import AIChatPage from "./pages/AIChatPage";
+import NotFound from "./pages/NotFound";
+import "./App.css";
 
 const queryClient = new QueryClient();
 
@@ -17,20 +16,15 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
+        <Toaster />
+        <Sonner />
         <BrowserRouter>
-          <div className="flex h-screen overflow-hidden bg-[#F7F8FA]">
-            <AppSidebar />
-            <div className="flex flex-col flex-1 overflow-hidden">
-              <Header />
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/ai-chat" element={<AIChatPage />} />
-                <Route path="/subscriptions" element={<SubscriptionsPage />} />
-                <Route path="/requests" element={<RequestsPage />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </div>
-          </div>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/subscriptions" element={<SubscriptionsPage />} />
+            <Route path="/ai-chat" element={<AIChatPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

@@ -19,8 +19,8 @@ export function UserProfile() {
         <div className="flex-1">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h2 className="text-xl font-semibold">Иван Иванов</h2>
-              <p className="text-sm text-gray-500">учетная запись (ЕСИА)</p>
+              <h2 className="text-xl font-semibold text-gray-900">Иван Иванов</h2>
+              <p className="text-sm text-gray-500">ivanov.i@gmail.com</p>
             </div>
             <Button variant="outline" size="sm" className="text-[#4338ca] border-[#4338ca] hover:bg-[#4338ca]/10">
               редактировать
@@ -29,27 +29,27 @@ export function UserProfile() {
           <div className="grid grid-cols-2 gap-x-8 gap-y-4">
             <div>
               <p className="text-sm text-gray-500 mb-1">Пол</p>
-              <p>Мужской</p>
+              <p className="text-gray-900">Мужской</p>
             </div>
             <div>
               <p className="text-sm text-gray-500 mb-1">Адрес</p>
-              <p>Название 3/2</p>
+              <p className="text-gray-900">Название 3/2</p>
             </div>
             <div>
-              <p className="text-sm text-gray-500 mb-1">ИНН/КПП</p>
+              <p className="text-sm text-gray-500 mb-1">Контакты</p>
+              <p className="text-gray-900">+8101238923</p>
+            </div>
+            <div>
+              <p className="text-sm text-gray-500 mb-1">ИП/ТОО</p>
               <p className="text-[#4338ca]">отсутствует</p>
             </div>
             <div>
-              <p className="text-sm text-gray-500 mb-1">Вид деятельности</p>
-              <p>Производство шин</p>
-            </div>
-            <div>
               <p className="text-sm text-gray-500 mb-1">Дата регистрации</p>
-              <p>11.12.2023</p>
+              <p className="text-gray-900">11.12.2023</p>
             </div>
             <div>
               <p className="text-sm text-gray-500 mb-1">Статус</p>
-              <p>активный</p>
+              <p className="text-gray-900">активный</p>
             </div>
           </div>
         </div>

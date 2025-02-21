@@ -63,26 +63,40 @@ export default function Index() {
     time: "10:35"
   }];
 
-  return <div className="min-h-screen bg-[#F5F7FA] flex">
-      <AppSidebar />
-      <div className="flex-1">
-        <Header />
-        <main className="p-6">
-          <div className="max-w-7xl mx-auto space-y-6">
-            <div className="flex items-center space-x-2 text-sm text-gray-600">
-              <span>Личный кабинет</span>
-              <span>→</span>
-              <span>Иван Иванов</span>
-            </div>
+  return (
+    <div className="min-h-screen w-screen bg-[#F5F7FA] overflow-x-hidden">
+      <div className="relative mx-auto max-w-[1920px] min-h-screen">
+        {/* Sidebar */}
+        <div className="fixed left-0 top-0 h-full">
+          <AppSidebar />
+        </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              <div className="lg:col-span-2 space-y-6">
+        {/* Main Content */}
+        <div className="ml-[361px]">
+          <Header />
+          
+          {/* Breadcrumb with exact positioning */}
+          <div className="relative h-[60px] border-b border-gray-100">
+            <span className="absolute left-[59px] top-[17px] text-[22px] leading-[26px] text-[#202295] font-['Roboto']">
+              Личный кабинет
+            </span>
+            <span className="absolute left-[255px] top-[17px]">→</span>
+            <span className="absolute left-[307px] top-[17px] text-[22px] leading-[26px] text-[#202295] font-['Roboto']">
+              Иван Иванов
+            </span>
+          </div>
+
+          {/* Main content area */}
+          <div className="px-[59px] py-[40px]">
+            {/* Increased width from 640px to 840px for left column */}
+            <div className="grid grid-cols-[840px,1fr] gap-x-[37px]">
+              <div className="space-y-6">
                 <UserProfile />
                 
                 <div className="bg-white rounded-lg shadow-sm">
                   <div className="border-b border-gray-100">
                     <div className="flex space-x-6 px-6">
-                      <button className="py-4 font-medium text-[#202295] border-b-2 border-[#202295]">
+                      <button className="py-4 font-medium text-[#4338ca] border-b-2 border-[#4338ca]">
                         Текущие запросы
                       </button>
                       <button className="py-4 text-gray-500">
@@ -96,15 +110,15 @@ export default function Index() {
                   <div className="p-6">
                     <div className="flex items-center justify-between mb-6">
                       <h3 className="font-medium">Запросы</h3>
-                      <button className="text-sm text-[#202295]">
+                      <button className="text-sm text-[#4338ca]">
                         перейти к запросу
                       </button>
                     </div>
                     <div className="space-y-4 relative">
                       <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-200 z-0" />
                       {requests.map(request => <div key={request.id} className="relative z-10 flex items-start pl-8">
-                          <div className="absolute left-3 -translate-x-1/2 w-3 h-3 rounded-full border-2 border-[#202295] bg-white my-[34px] mx-[5px] py-[4px] px-[4px]" />
-                          <div className="flex-1 p-4 bg-white border border-gray-100 rounded-lg hover:border-[#202295] transition-colors">
+                          <div className="absolute left-3 -translate-x-1/2 w-3 h-3 rounded-full border-2 border-[#4338ca] bg-white my-[34px] mx-[5px] py-[4px] px-[4px]" />
+                          <div className="flex-1 p-4 bg-white border border-gray-100 rounded-lg hover:border-[#4338ca] transition-colors">
                             <h4 className="font-medium mb-1">{request.title}</h4>
                             <div className="text-sm text-gray-500">
                               {request.date} {request.time}
@@ -134,7 +148,7 @@ export default function Index() {
                           <MessageSquare 
                             className={`w-5 h-5 shrink-0 ${
                               notification.isNew 
-                                ? 'text-[#202295]' 
+                                ? 'text-[#4338ca]' 
                                 : 'text-gray-400'
                             }`} 
                           />
@@ -155,7 +169,7 @@ export default function Index() {
                   <CardHeader className="px-6 py-4 border-b border-gray-100">
                     <CardTitle className="text-base font-semibold flex items-center justify-between">
                       Документы/Файлы
-                      <button className="flex items-center text-sm font-normal text-[#202295] hover:text-[#202295]/90">
+                      <button className="flex items-center text-sm font-normal text-[#4338ca] hover:text-[#3730a3]">
                         <span className="mr-1">Добавить</span>
                         <span className="text-lg">+</span>
                       </button>
@@ -171,7 +185,7 @@ export default function Index() {
                           }`}
                         >
                           <div className="flex items-center space-x-3">
-                            <FileText className="w-5 h-5 text-[#202295]" />
+                            <FileText className="w-5 h-5 text-[#4338ca]" />
                             <span className="text-sm text-gray-900">{doc.name}</span>
                           </div>
                           <div className="flex items-center space-x-2">
@@ -190,7 +204,8 @@ export default function Index() {
               </div>
             </div>
           </div>
-        </main>
+        </div>
       </div>
-    </div>;
+    </div>
+  );
 }

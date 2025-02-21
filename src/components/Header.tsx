@@ -2,8 +2,8 @@ import { Bell, Plus, Search, User } from "lucide-react";
 
 export function Header() {
   return (
-    <header className="h-16">
-      <div className="h-full flex items-center justify-between px-6">
+    <header className="h-[64px] w-full border-b border-gray-100">
+      <div className="h-full flex items-center justify-between px-[59px]">
         <div className="flex items-center space-x-8">
           <div className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-[#202295] rounded-full flex items-center justify-center">

@@ -3,6 +3,7 @@ import { Header } from "@/components/Header";
 import { UserProfile } from "@/components/UserProfile";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FileText, Download, MessageSquare, Copy } from "lucide-react";
+
 export default function Index() {
   const notifications = [{
     id: 1,
@@ -20,6 +21,7 @@ export default function Index() {
     description: "Ожидается для реализации все до 31/01/2024",
     isNew: false
   }];
+
   const documents = [{
     id: 1,
     name: "Заявление.pdf",
@@ -33,6 +35,7 @@ export default function Index() {
     name: "Заявление на участия.pdf",
     size: "890 KB"
   }];
+
   const requests = [{
     id: 1,
     title: "Запрос на получение лицензии/разрешения",
@@ -46,6 +49,7 @@ export default function Index() {
     date: "05.02.2024",
     time: "10:35"
   }];
+
   return <div className="min-h-screen bg-[#F5F7FA] flex">
       <AppSidebar />
       <div className="flex-1">
@@ -100,6 +104,37 @@ export default function Index() {
               </div>
 
               <div className="space-y-6">
+                <Card className="overflow-hidden">
+                  <CardHeader className="px-6 py-4">
+                    <CardTitle className="text-lg font-semibold flex items-center justify-between">
+                      Уведомления
+                      <span className="text-sm font-normal text-gray-500">смотреть все</span>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="p-0">
+                    <div>
+                      {notifications.map(notification => (
+                        <div 
+                          key={notification.id} 
+                          className="flex items-start space-x-3 p-4 bg-gray-50 border-b border-gray-100 last:border-b-0"
+                        >
+                          <MessageSquare 
+                            className={`w-5 h-5 mt-0.5 ${
+                              notification.isNew 
+                                ? 'text-[#4338ca]' 
+                                : 'text-gray-400'
+                            }`} 
+                          />
+                          <div className="min-w-0">
+                            <p className="font-medium truncate">{notification.title}</p>
+                            <p className="text-sm text-gray-500 mt-0.5">{notification.description}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+
                 <Card className="bg-white shadow-sm">
                   <CardHeader className="px-6 py-4 border-b border-gray-100">
                     <CardTitle className="text-base font-semibold flex items-center justify-between">
@@ -112,7 +147,13 @@ export default function Index() {
                   </CardHeader>
                   <CardContent className="p-0">
                     <div>
-                      {documents.map((doc, index) => <div key={doc.id} className={`flex items-center justify-between px-6 py-4 ${index !== documents.length - 1 ? 'border-b border-gray-100' : ''}`}>
+                      {documents.map((doc, index) => (
+                        <div
+                          key={doc.id}
+                          className={`flex items-center justify-between px-6 py-4 ${
+                            index !== documents.length - 1 ? 'border-b border-gray-100' : ''
+                          }`}
+                        >
                           <div className="flex items-center space-x-3">
                             <FileText className="w-5 h-5 text-[#4338ca]" />
                             <span className="text-sm text-gray-900">{doc.name}</span>
@@ -125,7 +166,8 @@ export default function Index() {
                               <Download className="w-4 h-4 text-gray-400" />
                             </button>
                           </div>
-                        </div>)}
+                        </div>
+                      ))}
                     </div>
                   </CardContent>
                 </Card>

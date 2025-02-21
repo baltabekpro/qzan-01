@@ -1,3 +1,4 @@
+
 import { AppSidebar } from "@/components/AppSidebar";
 import { Header } from "@/components/Header";
 import { UserProfile } from "@/components/UserProfile";
@@ -67,7 +68,7 @@ export default function Index() {
                         key={notification.id}
                         className="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg transition-colors"
                       >
-                        <div className={`w-2 h-2 mt-2 rounded-full ${notification.isNew ? 'bg-indigo-600' : 'bg-gray-300'}`} />
+                        <div className={`w-2 h-2 mt-2 rounded-full ${notification.isNew ? 'bg-[#4338ca]' : 'bg-gray-300'}`} />
                         <div>
                           <p className="font-medium">{notification.title}</p>
                           <p className="text-sm text-gray-500">{notification.description}</p>
@@ -82,7 +83,7 @@ export default function Index() {
                 <CardHeader>
                   <CardTitle className="text-lg font-semibold flex items-center justify-between">
                     Документы/Файлы
-                    <button className="text-sm font-normal text-indigo-600 hover:text-indigo-700">
+                    <button className="text-sm font-normal text-[#4338ca] hover:text-[#3730a3]">
                       Добавить
                     </button>
                   </CardTitle>

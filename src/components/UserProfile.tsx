@@ -15,10 +15,10 @@ export function UserProfile() {
         />
         </div>
         <h2 className="text-[24px] font-normal text-[#202295] mt-4">Иван Иванов</h2>
-        <p className="text-[12px] text-[#B3B3B3] mt-1">ivanov@gmail.com</p>
+        <p className="text-[14px] text-[#B3B3B3] mt-1">ivanov@gmail.com</p>
         <Button 
         variant="ghost"
-        className="mt-3 h-[26px] w-[132px] text-[10px] text-[#B3B3B3] border border-[#D9D9D9] rounded-none"
+        className="mt-3 h-[32px] w-[150px] text-[12px] text-[#B3B3B3] border border-[#D9D9D9] rounded-none"
         >
         редактировать
         </Button>
@@ -42,7 +42,7 @@ export function UserProfile() {
         </div>
         <div>
         <p className="text-sm text-[#B3B3B3] mb-1">ИП/ТОО</p>
-        <p className="text-[#4338ca]">отсутствует</p>
+        <p className="text-[#202295]">отсутствует</p>
         </div>
         <div>
         <p className="text-sm text-[#B3B3B3] mb-1">Дата регистрации</p>

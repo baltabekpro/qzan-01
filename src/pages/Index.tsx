@@ -1,4 +1,3 @@
-
 import { AppSidebar } from "@/components/AppSidebar";
 import { Header } from "@/components/Header";
 import { UserProfile } from "@/components/UserProfile";
@@ -8,7 +7,7 @@ import {
   CardHeader,
   CardTitle 
 } from "@/components/ui/card";
-import { FileText, Download } from "lucide-react";
+import { FileText, Download, MessageSquare } from "lucide-react";
 
 export default function Index() {
   const notifications = [
@@ -115,24 +114,30 @@ export default function Index() {
               </div>
 
               <div className="space-y-6">
-                <Card>
-                  <CardHeader>
+                <Card className="overflow-hidden">
+                  <CardHeader className="px-6 py-4">
                     <CardTitle className="text-lg font-semibold flex items-center justify-between">
                       Уведомления
                       <span className="text-sm font-normal text-gray-500">смотреть все</span>
                     </CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
+                  <CardContent className="p-0">
+                    <div>
                       {notifications.map((notification) => (
                         <div
                           key={notification.id}
-                          className="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg transition-colors"
+                          className="flex items-start space-x-3 p-4 bg-gray-50 border-b border-gray-100 last:border-b-0"
                         >
-                          <div className={`w-2 h-2 mt-2 rounded-full ${notification.isNew ? 'bg-[#4338ca]' : 'bg-gray-300'}`} />
-                          <div>
-                            <p className="font-medium">{notification.title}</p>
-                            <p className="text-sm text-gray-500">{notification.description}</p>
+                          <MessageSquare 
+                            className={`w-5 h-5 mt-0.5 ${
+                              notification.isNew 
+                                ? 'text-[#4338ca]' 
+                                : 'text-gray-400'
+                            }`} 
+                          />
+                          <div className="min-w-0">
+                            <p className="font-medium truncate">{notification.title}</p>
+                            <p className="text-sm text-gray-500 mt-0.5">{notification.description}</p>
                           </div>
                         </div>
                       ))}

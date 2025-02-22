@@ -1,4 +1,3 @@
-
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 interface Payment {
@@ -42,7 +41,7 @@ const payments: Payment[] = [
 
 export function PaymentHistory() {
   return (
-    <Card className="w-full bg-[#F5F7FA]">
+    <Card className="mx-auto w-full max-w-[814px] bg-[#F5F7FA]">
       <CardHeader className="pb-4">
         <CardTitle className="text-base font-semibold">История платежей</CardTitle>
       </CardHeader>
@@ -56,8 +55,8 @@ export function PaymentHistory() {
           </div>
           
           <div className="space-y-6 divide-y divide-[#D9D9D9]">
-            {payments.map((payment) => (
-              <div key={payment.id} className="pt-6 first:pt-0">
+            {payments.map((payment, index) => (
+              <div key={`${payment.id}-${index}`} className="pt-6 first:pt-0">
                 <div className="grid grid-cols-4 gap-4 items-center">
                   <div>
                     <div className="text-sm">{payment.id}</div>

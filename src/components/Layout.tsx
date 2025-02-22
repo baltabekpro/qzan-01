@@ -8,11 +8,14 @@ interface LayoutProps {
 export function Layout({ children }: LayoutProps) {
   return (
     <div className="flex h-full">
-      <div className="fixed left-0 top-0 h-full">
+      {/* Fixed sidebar */}
+      <div className="fixed left-0 top-0 h-full w-[361px]">
         <AppSidebar />
       </div>
+      {/* Main area with margin-left set to sidebar width */}
       <div className="flex-1 ml-[361px]">
-        <div className="max-w-[1559px] mx-auto">
+        {/* Constrain main content width to prevent overflow off-screen */}
+        <div className="mx-auto w-full max-w-[1200px] px-4">
           <Header />
           <main className="flex-1">
             {children}

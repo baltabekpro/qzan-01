@@ -28,27 +28,27 @@ export function UserProfile() {
       {/* Right Details Section */}
       <div className="w-[467px] h-[271px] bg-white">
       <div className="grid grid-cols-2 gap-x-12 gap-y-4 p-6">
-        <div>
+        <div className="justify-start">
         <p className="text-sm text-[#B3B3B3] mb-1">Пол</p>
         <p className="text-[#202295]">Мужской</p>
         </div>
-        <div>
+        <div className="justify-start">
         <p className="text-sm text-[#B3B3B3] mb-1">Адрес</p>
         <p className="text-[#202295]">Название 3/2</p>
         </div>
-        <div>
+        <div className="justify-start">
         <p className="text-sm text-[#B3B3B3] mb-1">Контакты</p>
         <p className="text-[#202295]">+8101238923</p>
         </div>
-        <div>
+        <div className="justify-start">
         <p className="text-sm text-[#B3B3B3] mb-1">ИП/ТОО</p>
         <p className="text-[#202295]">отсутствует</p>
         </div>
-        <div>
+        <div className="justify-start">
         <p className="text-sm text-[#B3B3B3] mb-1">Дата регистрации</p>
         <p className="text-[#202295]">11.12.2023</p>
         </div>
-        <div>
+        <div className="justify-start">
         <p className="text-sm text-[#B3B3B3] mb-1">Статус</p>
         <p className="text-[#202295]">активный</p>
         </div>

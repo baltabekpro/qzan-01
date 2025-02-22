@@ -1,5 +1,4 @@
 
-import { Header } from "@/components/Header";
 import { SubscriptionTable } from "@/components/subscriptions/SubscriptionTable";
 import { PaymentHistory } from "@/components/subscriptions/PaymentHistory";
 import { PaymentCards } from "@/components/subscriptions/PaymentCards";
@@ -9,8 +8,6 @@ export default function SubscriptionsPage() {
     <div className="min-h-screen w-full bg-[#F5F7FA]">
       <div className="flex h-full">
         <div className="flex-1 h-full flex flex-col max-w-[1559px] mx-auto">
-          <Header />
-          
           {/* Breadcrumb centered with improved responsiveness */}
           <div className="h-[60px] border-b border-gray-100 flex items-center justify-center px-4">
             <span className="text-lg sm:text-xl lg:text-[22px] leading-[26px] text-[#202295]">

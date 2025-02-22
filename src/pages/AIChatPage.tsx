@@ -1,14 +1,13 @@
+
 import { Header } from "@/components/Header";
 import { PaperclipIcon, ArrowRightCircle, File, Key, CheckSquare } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
 export default function AIChatPage() {
   return (
-    <div className="min-h-screen w-screen bg-[#F5F7FA] overflow-hidden">
-      <div className="relative mx-auto max-w-[1920px] h-full">
-        {/* Removed duplicate Sidebar provided by Layout */}
-        {/* Main Content: margin adjusted via Layout */}
-        <div className="flex-1 h-full flex flex-col">
+    <div className="h-screen w-screen bg-[#F5F7FA] overflow-hidden">
+      <div className="flex h-full">
+        <div className="flex-1 h-full flex flex-col max-w-[1559px] mx-auto">
           <Header />
           {/* Centered main area */}
           <div className="flex-1 flex flex-col items-center justify-center px-4">

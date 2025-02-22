@@ -1,3 +1,4 @@
+
 import { Header } from "@/components/Header";
 import { SubscriptionTable } from "@/components/subscriptions/SubscriptionTable";
 import { PaymentHistory } from "@/components/subscriptions/PaymentHistory";
@@ -6,9 +7,8 @@ import { PaymentCards } from "@/components/subscriptions/PaymentCards";
 export default function SubscriptionsPage() {
   return (
     <div className="h-screen w-screen bg-[#F5F7FA] overflow-hidden">
-      <div className="relative mx-auto max-w-[1920px] h-full">
-        {/* Main Content: no need for additional margin offset */}
-        <div className="flex-1 h-full flex flex-col">
+      <div className="flex h-full">
+        <div className="flex-1 h-full flex flex-col max-w-[1559px] mx-auto">
           <Header />
           
           {/* Breadcrumb centered */}

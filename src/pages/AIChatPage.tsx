@@ -1,5 +1,4 @@
 
-import { Header } from "@/components/Header";
 import { PaperclipIcon, ArrowRightCircle, File, Key, CheckSquare } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
@@ -8,7 +7,6 @@ export default function AIChatPage() {
     <div className="min-h-screen w-full bg-[#F5F7FA]">
       <div className="flex h-full">
         <div className="flex-1 h-full flex flex-col max-w-[1559px] mx-auto">
-          <Header />
           {/* Centered main area with improved responsiveness */}
           <div className="flex-1 flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8">
             <div className="w-full max-w-[814px] mx-auto">

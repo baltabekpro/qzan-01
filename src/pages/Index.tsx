@@ -16,8 +16,8 @@ export default function Index() {
 
       {/* Main content with proper mobile padding */}
       <div className="px-4 sm:px-[59px] py-6 sm:py-[40px]">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-[1200px] mx-auto">
-          <div className="space-y-6">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="space-y-6 w-full">
             <UserProfile />
             <RequestSection />
           </div>

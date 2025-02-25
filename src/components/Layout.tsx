@@ -32,13 +32,13 @@ export function Layout({ children }: LayoutProps) {
       
       <div 
         className={cn(
-          "flex-1 min-h-screen",
-          isMenuOpen ? "pl-[300px] sm:pl-[361px]" : "pl-0",
+          "flex-1 min-h-screen transition-all duration-300",
+          isMenuOpen ? "md:ml-[300px] lg:ml-[361px]" : "ml-0",
         )}
       >
         <div className="w-full max-w-[1600px] mx-auto">
           <Header />
-          <main className="w-full px-4">
+          <main className="w-full">
             {children}
           </main>
         </div>

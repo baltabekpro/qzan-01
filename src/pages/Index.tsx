@@ -56,8 +56,8 @@ export default function Index() {
   return (
     <div className="min-h-screen w-full bg-[#F5F7FA]">
       <div className="flex justify-center px-4 sm:px-[59px] py-6 sm:py-[40px]">
-        <div className="w-full max-w-[1200px]">
-          <div className="flex flex-col lg:flex-row items-start space-y-6 lg:space-y-0 lg:space-x-6 w-full">
+        <div className="w-full max-w-[1600px]">
+          <div className="flex flex-col lg:flex-row items-start space-y-6 lg:space-y-0 lg:space-x-6">
             <div className="w-full lg:w-2/3">
               <div className="w-full">
                 <UserProfile />
@@ -68,7 +68,7 @@ export default function Index() {
             </div>
 
             {/* Desktop only - Right sidebar with notifications and documents */}
-            <div className="hidden lg:block lg:w-1/3 space-y-6">
+            <div className="hidden lg:block lg:w-1/3 space-y-6 overflow-y-auto">
               {/* Notifications Section */}
               <div className="bg-white rounded-lg p-6">
                 <div className="flex items-center justify-between mb-6">

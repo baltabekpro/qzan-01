@@ -57,21 +57,17 @@ export default function Index() {
   return (
     <>
       {/* Breadcrumb */}
-      <div className="relative h-[60px] border-b border-gray-100">
-        <span className="absolute left-[59px] top-[17px] text-[22px] leading-[26px] text-[#202295]">
-          Личный кабинет
-        </span>
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute left-[255px] top-[17px]">
+      <div className="flex flex-wrap items-center gap-4 border-b border-gray-100 p-4">
+        <span className="text-[22px] leading-[26px] text-[#202295]">Личный кабинет</span>
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M5.83325 14H22.1666M22.1666 14L13.9999 5.83331M22.1666 14L13.9999 22.1666" stroke="#202295" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-        <span className="absolute left-[307px] top-[17px] text-[22px] leading-[26px] text-[#202295]">
-          Иван Иванов
-        </span>
+        <span className="text-[22px] leading-[26px] text-[#202295]">Иван Иванов</span>
       </div>
 
       {/* Main content */}
-      <div className="px-4 sm:px-[59px] py-[40px]">
-        <div className="grid grid-cols-1 xl:grid-cols-[840px,1fr] gap-6">
+      <div className="px-4 sm:px-[59px] py-[40px] h-screen overflow-y-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div className="space-y-6">
             <UserProfile />
             <RequestSection />
@@ -87,19 +83,23 @@ export default function Index() {
               </CardHeader>
               <CardContent className="p-0">
                 <div>
-                  {notifications.map(notification => <div key={notification.id} className="flex items-start space-x-3 px-6 py-4 hover:bg-gray-50 transition-colors">
+                  {notifications.map(notification => (
+                    <div key={notification.id} className="flex items-start space-x-3 px-6 py-4 hover:bg-gray-50 transition-colors">
                       <MessageSquare className={`w-5 h-5 shrink-0 ${notification.isNew ? 'text-[#4338ca] fill-[#4338ca]' : 'text-gray-400 fill-gray-400'}`} />
                       <div className="min-w-0 flex-1">
-                        <p className="font-medium text-gray-900">{notification.title}</p>
-                        <p className="text-sm text-gray-500 mt-0.5">{notification.description}</p>
+                        <p className="font-medium text-gray-900 truncate">{notification.title}</p>
+                        <p className="text-sm text-gray-500 mt-0.5 truncate">{notification.description}</p>
                       </div>
-                      {notification.isRead && <div className="flex items-center gap-2">
+                      {notification.isRead && (
+                        <div className="flex items-center gap-2">
                           <span className="text-xs text-gray-400 shrink-0">прочитано</span>
                           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B3B3B3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <polyline points="20 6 9 17 4 12" />
                           </svg>
-                        </div>}
-                    </div>)}
+                        </div>
+                      )}
+                    </div>
+                  ))}
                 </div>
               </CardContent>
             </Card>
@@ -121,7 +121,8 @@ export default function Index() {
               </CardHeader>
               <CardContent className="p-0">
                 <div>
-                  {documents.map((doc, index) => <div key={doc.id} className={`flex items-center justify-between px-6 py-4 ${index !== documents.length - 1 ? 'border-b border-gray-100' : ''}`}>
+                  {documents.map((doc, index) => (
+                    <div key={doc.id} className={`flex items-center justify-between px-6 py-4 ${index !== documents.length - 1 ? 'border-b border-gray-100' : ''}`}>
                       <div className="flex items-center space-x-3">
                         <FileText className="w-5 h-5 text-[#4338ca]" />
                         <span className="text-sm text-gray-900">{doc.name}</span>
@@ -138,7 +139,8 @@ export default function Index() {
                           <Download className="w-4 h-4 text-gray-400" />
                         </button>
                       </div>
-                    </div>)}
+                    </div>
+                  ))}
                 </div>
               </CardContent>
             </Card>

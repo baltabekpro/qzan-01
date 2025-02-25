@@ -1,4 +1,3 @@
-
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 interface Subscription {
@@ -40,22 +39,23 @@ export function SubscriptionTable() {
             <div className="text-xs font-medium text-[#B3B3B3]">Статус</div>
             <div className="text-xs font-medium text-[#B3B3B3]">Стоимость</div>
           </div>
-          
-          <div className="space-y-6">
-            {subscriptions.map((subscription) => (
-              <div key={subscription.id} className="grid grid-cols-4 gap-4 items-center">
-                <div className="text-sm">{subscription.name}</div>
-                <div className="text-sm">{subscription.expiryDate}</div>
-                <div className={`text-sm ${
-                  subscription.status === "active" 
-                    ? "text-[#60D54E]" 
-                    : "text-[#DF2B2B]"
-                }`}>
-                  {subscription.status === "active" ? "активный" : "деактив."}
+          <div className="max-h-80 overflow-y-auto">
+            <div className="space-y-6">
+              {subscriptions.map((subscription) => (
+                <div key={subscription.id} className="grid grid-cols-4 gap-4 items-center">
+                  <div className="text-sm">{subscription.name}</div>
+                  <div className="text-sm">{subscription.expiryDate}</div>
+                  <div className={`text-sm ${
+                    subscription.status === "active" 
+                      ? "text-[#60D54E]" 
+                      : "text-[#DF2B2B]"
+                  }`}>
+                    {subscription.status === "active" ? "активный" : "деактив."}
+                  </div>
+                  <div className="text-sm">{subscription.price}</div>
                 </div>
-                <div className="text-sm">{subscription.price}</div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </CardContent>

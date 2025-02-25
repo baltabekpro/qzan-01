@@ -1,4 +1,3 @@
-
 import { Plus } from "lucide-react";
 
 export function PaymentCards() {
@@ -10,6 +9,7 @@ export function PaymentCards() {
       
       <div className="space-y-4">
         {/* MasterCard */}
+        <div className="flex items-center"></div>
         <div className="flex items-center">
           <div className="w-8 h-8 mr-2">
             <img
@@ -19,10 +19,10 @@ export function PaymentCards() {
             />
           </div>
           <div className="text-white">
-            <div className="font-roboto font-light text-sm">
-              MasterCard **************6373
+            <div className="font-roboto font-medium text-sm">
+              MasterCard ****6373
             </div>
-            <div className="font-roboto font-light text-[11px]">
+            <div className="font-roboto text-xs">
               срок действия: 04/25
             </div>
           </div>
@@ -38,17 +38,16 @@ export function PaymentCards() {
             />
           </div>
           <div className="text-white">
-            <div className="font-roboto font-light text-sm">
-              VISA **************3354
+            <div className="font-roboto font-medium text-sm">
+              VISA ****3354
             </div>
-            <div className="font-roboto font-light text-[11px]">
+            <div className="font-roboto text-xs">
               срок действия: 09/29
             </div>
           </div>
         </div>
       </div>
 
-      {/* Add Card Button */}
       <button className="absolute top-4 right-4 text-white hover:bg-white/10 rounded-full p-1 transition-colors">
         <Plus className="w-4 h-4" />
       </button>

@@ -53,28 +53,29 @@ export function PaymentHistory() {
             <div className="text-xs font-medium text-[#B3B3B3]">Стоимость</div>
             <div className="text-xs font-medium text-[#B3B3B3]">Статус</div>
           </div>
-          
-          <div className="space-y-6 divide-y divide-[#D9D9D9]">
-            {payments.map((payment, index) => (
-              <div key={`${payment.id}-${index}`} className="pt-6 first:pt-0">
-                <div className="grid grid-cols-4 gap-4 items-center">
-                  <div>
-                    <div className="text-sm">{payment.id}</div>
-                    <div className="text-xs text-[#B3B3B3] mt-1">{payment.date}</div>
-                  </div>
-                  <div className="text-sm">{payment.name}</div>
-                  <div className="text-sm">{payment.amount}</div>
-                  <div>
-                    <span className={`inline-flex items-center px-3 py-1 rounded-3xl text-xs
-                      ${payment.status === "paid" 
-                        ? "bg-[#BEFCB5] text-[#49AE39]" 
-                        : "bg-[#D9D9D9] text-[#979897]"}`}>
-                      {payment.status === "paid" ? "оплачено" : "бронь"}
-                    </span>
+          <div className="max-h-80 overflow-y-auto">
+            <div className="space-y-6 divide-y divide-[#D9D9D9]">
+              {payments.map((payment, index) => (
+                <div key={`${payment.id}-${index}`} className="pt-6 first:pt-0">
+                  <div className="grid grid-cols-4 gap-4 items-center">
+                    <div>
+                      <div className="text-sm">{payment.id}</div>
+                      <div className="text-xs text-[#B3B3B3] mt-1">{payment.date}</div>
+                    </div>
+                    <div className="text-sm">{payment.name}</div>
+                    <div className="text-sm">{payment.amount}</div>
+                    <div>
+                      <span className={`inline-flex items-center px-3 py-1 rounded-3xl text-xs
+                        ${payment.status === "paid" 
+                          ? "bg-[#BEFCB5] text-[#49AE39]" 
+                          : "bg-[#D9D9D9] text-[#979897]"}`}>
+                        {payment.status === "paid" ? "оплачено" : "бронь"}
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </CardContent>

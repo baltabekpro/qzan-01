@@ -100,7 +100,7 @@ export function Header() {
                   </SheetTitle>
                 </SheetHeader>
                 <div className="overflow-auto">
-                  {notifications.map(notification => <div key={notification.id} className="flex items-start space-x-3 px-4 sm:px-6 py-4 transition-colors bg-[#f5f7fa]">
+                  {notifications.map(notification => <div key={notification.id} className="flex items-start space-x-3 px-4 sm:px-6 py-4 transition-colors bg-[#f5f7fa] my-[19px]">
                       <MessageSquare className={`w-5 h-5 shrink-0 ${notification.isNew ? 'text-[#4338ca] fill-[#4338ca]' : 'text-gray-400 fill-gray-400'}`} />
                       <div className="min-w-0 flex-1">
                         <p className="font-medium text-gray-900 text-sm sm:text-base truncate">{notification.title}</p>

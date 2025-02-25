@@ -14,11 +14,15 @@ export default function Index() {
         <span className="text-lg sm:text-[22px] leading-[26px] text-[#202295]">Иван Иванов</span>
       </div>
 
-      <div className="px-4 sm:px-[59px] py-6 sm:py-[40px]">
-        <div className="max-w-[1200px] mx-auto">
-          <div className="space-y-6">
-            <UserProfile />
-            <RequestSection />
+      <div className="flex justify-center px-4 sm:px-[59px] py-6 sm:py-[40px]">
+        <div className="w-full max-w-[1200px]">
+          <div className="flex flex-col items-center space-y-6 w-full">
+            <div className="w-full">
+              <UserProfile />
+            </div>
+            <div className="w-full">
+              <RequestSection />
+            </div>
           </div>
         </div>
       </div>

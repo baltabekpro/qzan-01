@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { AppSidebar } from "./AppSidebar";
 import { Header } from "./Header";
+import { cn } from "@/lib/utils";
 
 interface LayoutProps {
   children: React.ReactNode;

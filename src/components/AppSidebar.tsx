@@ -1,49 +1,59 @@
+
 import { useState, useEffect } from "react";
-import { MessageSquare, User, Lock, Clock, CreditCard, File, Heart, Download, Plus, Bot, MessageCircle } from "lucide-react";
+import { MessageSquare, User, Lock, Clock, CreditCard, File, Heart, Download, Plus, Bot, MessageCircle, Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useLocation, Link } from "react-router-dom";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 const menuItems = [
   { 
     icon: Plus,
     text: "Новый чат",
     href: "/chat",
-    className: "text-[#9898BF] font-light" 
+    className: "text-[#9898BF] font-light",
+    mobileDialog: true
   },
   { 
     icon: Bot,
     text: "Чат с ИИ",
-    href: "/ai-chat"
+    href: "/ai-chat",
+    mobileDialog: true
   },
   {
     icon: MessageCircle,
     text: "Тестовый чат",
-    href: "/test-chat"
+    href: "/test-chat",
+    mobileDialog: true
   },
   { 
     icon: Clock,
     text: "История запросов",
-    href: "/requests" 
+    href: "/requests",
+    mobileDialog: true
   },
   { 
     icon: User,
     text: "Личный кабинет",
-    href: "/" 
+    href: "/",
+    mobileDialog: true
   },
   { 
     icon: MessageSquare,
     text: "Уведомления",
-    href: "/notifications" 
+    href: "/notifications",
+    mobileDialog: true
   },
   { 
     icon: Lock,
     text: "Конфиденциальность",
-    href: "/privacy" 
+    href: "/privacy",
+    mobileDialog: true
   },
   { 
     icon: CreditCard,
     text: "Подписки и платежи",
-    href: "/subscriptions" 
+    href: "/subscriptions",
+    mobileDialog: true
   },
 ];
 
@@ -59,31 +69,77 @@ export function AppSidebar() {
   const [isMobile, setIsMobile] = useState(false);
   const location = useLocation();
 
-  // Check for mobile screen on resize
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobile(window.innerWidth < 768);
-      if (window.innerWidth < 768) {
+      const isMobileView = window.innerWidth < 768;
+      setIsMobile(isMobileView);
+      if (isMobileView) {
         setIsMenuOpen(false);
       } else if (window.innerWidth > 1024) {
         setIsMenuOpen(true);
       }
     };
     
-    // Initial check
     checkScreenSize();
-    
-    // Add event listener
     window.addEventListener('resize', checkScreenSize);
-    
-    // Cleanup
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
+
+  const MenuItem = ({ item }) => {
+    if (isMobile && !isMenuOpen && item.mobileDialog) {
+      return (
+        <Dialog>
+          <DialogTrigger asChild>
+            <div className={cn(
+              "h-[45px] flex items-center px-2 hover:bg-gray-50 cursor-pointer group border-l-4 border-transparent",
+              location.pathname === item.href && "bg-[#202295] border-white"
+            )}>
+              <item.icon className={cn(
+                "w-[20px] h-[20px] stroke-[2.5px] group-hover:text-[#202295]",
+                location.pathname === item.href ? "text-white" : "text-[#B3B3B3]"
+              )} />
+            </div>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-md">
+            <div className="p-4">
+              <h3 className="text-lg font-semibold mb-4">{item.text}</h3>
+              {/* Add your dialog content here */}
+              <p>Content for {item.text}</p>
+            </div>
+          </DialogContent>
+        </Dialog>
+      );
+    }
+
+    return (
+      <Link
+        to={item.href}
+        className={cn(
+          "h-[45px] flex items-center px-5 hover:bg-gray-50 cursor-pointer group border-l-4 border-transparent",
+          !isMenuOpen && "px-2 justify-center",
+          location.pathname === item.href && "bg-[#202295] border-white",
+          item.className
+        )}
+      >
+        <item.icon className={cn(
+          "w-[20px] h-[20px] stroke-[2.5px] group-hover:text-[#202295]",
+          location.pathname === item.href ? "text-white" : "text-[#B3B3B3]"
+        )} />
+        <span className={cn(
+          "ml-3 text-[16px] group-hover:text-[#202295] transition-opacity duration-300",
+          !isMenuOpen && "opacity-0 w-0 ml-0",
+          location.pathname === item.href ? "text-white" : item.className || "text-[#000000]"
+        )}>
+          {item.text}
+        </span>
+      </Link>
+    );
+  };
 
   return (
     <div className={cn(
       "h-full bg-white border border-black transition-all duration-300 flex-shrink-0",
-      isMenuOpen ? "w-[300px] sm:w-[361px]" : "w-[80px] sm:w-[100px]",
+      isMenuOpen ? "w-[300px] sm:w-[361px]" : "w-[60px] sm:w-[100px]",
       isMobile && !isMenuOpen && "w-[60px]"
     )}>
       <div className="flex items-center justify-between px-4 sm:px-[30px] pt-8">
@@ -95,52 +151,13 @@ export function AppSidebar() {
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="hover:bg-gray-50 p-2 transition-colors z-10"
         >
-          <svg 
-            width="29" 
-            height="29" 
-            viewBox="0 0 29 29" 
-            fill="none" 
-            xmlns="http://www.w3.org/2000/svg"
-            className={cn(
-              "transition-transform duration-300",
-              !isMenuOpen && "rotate-180"
-            )}
-          >
-            <path 
-              d="M3.625 14.5H25.375M3.625 7.25H25.375M3.625 21.75H25.375" 
-              stroke="#B3B3B3" 
-              strokeWidth="2" 
-              strokeLinecap="round" 
-              strokeLinejoin="round"
-            />
-          </svg>
+          <Menu className="w-6 h-6 text-[#B3B3B3]" />
         </button>
       </div>
 
       <nav className="mt-12">
         {menuItems.map((item, index) => (
-          <Link
-            key={index}
-            to={item.href}
-            className={cn(
-              "h-[45px] flex items-center px-5 hover:bg-gray-50 cursor-pointer group border-l-4 border-transparent",
-              !isMenuOpen && "px-2 justify-center",
-              location.pathname === item.href && "bg-[#202295] border-white",
-              item.className
-            )}
-          >
-            <item.icon className={cn(
-              "w-[20px] h-[20px] stroke-[2.5px] group-hover:text-[#202295]",
-              location.pathname === item.href ? "text-white" : "text-[#B3B3B3]"
-            )} />
-            <span className={cn(
-              "ml-3 text-[16px] group-hover:text-[#202295] transition-opacity duration-300",
-              !isMenuOpen && "opacity-0 w-0 ml-0",
-              location.pathname === item.href ? "text-white" : item.className || "text-[#000000]"
-            )}>
-              {item.text}
-            </span>
-          </Link>
+          <MenuItem key={index} item={item} />
         ))}
       </nav>
 

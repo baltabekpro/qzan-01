@@ -1,9 +1,7 @@
-
 import { Bell, Plus, Search, User, FileText, MessageSquare, Download } from "lucide-react";
 import { useState } from "react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-
 export function Header() {
   const [showSearch, setShowSearch] = useState(false);
   const notifications = [{
@@ -53,9 +51,7 @@ export function Header() {
     name: "Заявление на участия.pdf",
     size: "890 KB"
   }];
-  
-  return (
-    <header className="h-[64px] w-full border-b border-gray-100 bg-white relative">
+  return <header className="h-[64px] w-full border-b border-gray-100 bg-white relative">
       <div className="h-full flex items-center justify-between px-4 sm:px-[59px]">
         {/* Left side - User info */}
         <div className={`flex items-center space-x-2 sm:space-x-8 transition-all duration-300 ${showSearch ? 'opacity-0 sm:opacity-100' : 'opacity-100'}`}>
@@ -104,23 +100,19 @@ export function Header() {
                     </SheetTitle>
                   </SheetHeader>
                   <div className="overflow-auto">
-                    {notifications.map(notification => (
-                      <div key={notification.id} className="flex items-start space-x-3 px-4 sm:px-6 py-4 transition-colors bg-[#f5f7fa] my-[19px]">
+                    {notifications.map(notification => <div key={notification.id} className="flex items-start space-x-3 px-4 sm:px-6 py-4 transition-colors bg-[#f5f7fa] my-[19px]">
                         <MessageSquare className={`w-5 h-5 shrink-0 ${notification.isNew ? 'text-[#4338ca] fill-[#4338ca]' : 'text-gray-400 fill-gray-400'}`} />
                         <div className="min-w-0 flex-1">
                           <p className="font-medium text-gray-900 text-sm sm:text-base truncate">{notification.title}</p>
                           <p className="text-xs sm:text-sm text-gray-500 mt-0.5 truncate">{notification.description}</p>
                         </div>
-                        {notification.isRead && (
-                          <div className="flex items-center gap-2">
+                        {notification.isRead && <div className="flex items-center gap-2">
                             <span className="text-xs text-gray-400 shrink-0">прочитано</span>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B3B3B3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                               <polyline points="20 6 9 17 4 12" />
                             </svg>
-                          </div>
-                        )}
-                      </div>
-                    ))}
+                          </div>}
+                      </div>)}
                   </div>
                 </SheetContent>
               </Sheet>
@@ -138,15 +130,14 @@ export function Header() {
                   <SheetHeader className="px-4 sm:px-6 py-4 border-b border-gray-100">
                     <SheetTitle className="text-base sm:text-lg font-semibold flex items-center justify-between">
                       Документы/Файлы
-                      <button className="flex items-center text-sm font-normal text-[#4338ca] hover:text-[#3730a3]">
-                        <span className="mr-1">Добавить</span>
-                        <Plus className="w-4 h-4" />
+                      <button className="flex items-center text-sm font-normal text-[#4338ca] hover:text-[#3730a3] mx-[30px]">
+                        <span className="mr-1 my-0 mx-0">Добавить</span>
+                        <Plus className="w-4 h-4 mx-[3px]" />
                       </button>
                     </SheetTitle>
                   </SheetHeader>
                   <div className="overflow-auto">
-                    {documents.map((doc, index) => (
-                      <div key={doc.id} className={`flex items-center justify-between px-4 sm:px-6 py-4 ${index !== documents.length - 1 ? 'border-b border-gray-100' : ''}`}>
+                    {documents.map((doc, index) => <div key={doc.id} className={`flex items-center justify-between px-4 sm:px-6 py-4 ${index !== documents.length - 1 ? 'border-b border-gray-100' : ''}`}>
                         <div className="flex items-center space-x-3">
                           <FileText className="w-5 h-5 text-[#4338ca]" />
                           <span className="text-sm sm:text-base text-gray-900">{doc.name}</span>
@@ -163,8 +154,7 @@ export function Header() {
                             <Download className="w-4 h-4 text-gray-400" />
                           </button>
                         </div>
-                      </div>
-                    ))}
+                      </div>)}
                   </div>
                 </SheetContent>
               </Sheet>
@@ -177,6 +167,5 @@ export function Header() {
           </div>
         </div>
       </div>
-    </header>
-  );
+    </header>;
 }

@@ -2,10 +2,8 @@ import { Bell, Plus, Search, User, FileText, MessageSquare, Download } from "luc
 import { useState } from "react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-
 export function Header() {
   const [showSearch, setShowSearch] = useState(false);
-
   const notifications = [{
     id: 1,
     title: "Уведомление о регистрации бизнеса",
@@ -40,7 +38,6 @@ export function Header() {
     isRead: true,
     bgColor: "#D9D9D9"
   }];
-
   const documents = [{
     id: 1,
     name: "Заявление.pdf",
@@ -54,9 +51,7 @@ export function Header() {
     name: "Заявление на участия.pdf",
     size: "890 KB"
   }];
-
-  return (
-    <header className="h-[64px] w-full border-b border-gray-100 bg-white relative">
+  return <header className="h-[64px] w-full border-b border-gray-100 bg-white relative">
       <div className="h-full flex items-center justify-between px-4 sm:px-[59px]">
         {/* Left side - User info */}
         <div className={`flex items-center space-x-2 sm:space-x-8 transition-all duration-300 ${showSearch ? 'opacity-0 sm:opacity-100' : 'opacity-100'}`}>
@@ -71,46 +66,23 @@ export function Header() {
         {/* Right side - Actions */}
         <div className="flex items-center space-x-2 sm:space-x-4">
           {/* Search - toggleable on mobile */}
-          <div 
-            className={`
+          <div className={`
               transition-all duration-300 ease-out
-              ${showSearch 
-                ? 'absolute left-0 right-0 px-4 bg-white h-[64px] flex items-center z-10' 
-                : 'hidden sm:relative sm:flex'
-              }
+              ${showSearch ? 'absolute left-0 right-0 px-4 bg-white h-[64px] flex items-center z-10' : 'hidden sm:relative sm:flex'}
               ${showSearch ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}
-            `}
-          >
-            <input
-              type="text"
-              placeholder="поиск"
-              className="pl-10 pr-4 py-2 border border-gray-200 rounded-[33px] w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-[#202295] focus:border-transparent transition-all duration-300"
-            />
+            `}>
+            <input type="text" placeholder="поиск" className="pl-10 pr-4 py-2 border border-gray-200 rounded-[33px] w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-[#202295] focus:border-transparent transition-all duration-300" />
             <Search className="w-5 h-5 text-gray-400 absolute left-6 sm:left-3 top-1/2 transform -translate-y-1/2" />
-            {showSearch && (
-              <Button
-                variant="ghost"
-                size="sm"
-                className="ml-2 sm:hidden"
-                onClick={() => setShowSearch(false)}
-              >
+            {showSearch && <Button variant="ghost" size="sm" className="ml-2 sm:hidden" onClick={() => setShowSearch(false)}>
                 Отмена
-              </Button>
-            )}
+              </Button>}
           </div>
           
           {/* Other actions with animation */}
           <div className={`flex items-center space-x-2 sm:space-x-4 transition-all duration-300 ${showSearch ? 'opacity-0 sm:opacity-100 scale-95' : 'opacity-100 scale-100'}`}>
-            {!showSearch && (
-              <Button
-                variant="ghost"
-                size="icon"
-                className="sm:hidden"
-                onClick={() => setShowSearch(true)}
-              >
+            {!showSearch && <Button variant="ghost" size="icon" className="sm:hidden" onClick={() => setShowSearch(true)}>
                 <Search className="w-5 h-5" />
-              </Button>
-            )}
+              </Button>}
 
             {/* Notifications */}
             <Sheet>
@@ -124,7 +96,7 @@ export function Header() {
                 <SheetHeader className="px-4 sm:px-6 py-4 border-b border-gray-100">
                   <SheetTitle className="text-base sm:text-lg font-medium flex items-center justify-between">
                     Уведомления
-                    <span className="text-sm font-normal text-gray-400">смотреть все</span>
+                    
                   </SheetTitle>
                 </SheetHeader>
                 <div className="overflow-auto">
@@ -192,6 +164,5 @@ export function Header() {
           </div>
         </div>
       </div>
-    </header>
-  );
+    </header>;
 }

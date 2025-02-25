@@ -14,9 +14,9 @@ export default function Index() {
         <span className="text-lg sm:text-[22px] leading-[26px] text-[#202295]">Иван Иванов</span>
       </div>
 
-      {/* Main content with proper mobile padding */}
+      {/* Main content with proper centering */}
       <div className="px-4 sm:px-[59px] py-6 sm:py-[40px]">
-        <div className="max-w-[1200px] mx-auto">
+        <div className="max-w-[1200px] mx-auto w-full">
           <div className="space-y-6 w-full">
             <UserProfile />
             <RequestSection />

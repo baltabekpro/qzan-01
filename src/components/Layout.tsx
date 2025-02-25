@@ -30,16 +30,25 @@ export function Layout({ children }: LayoutProps) {
     <div className="flex min-h-screen w-full">
       <AppSidebar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       
-      {/* Main content area with responsive margin and transition */}
-      <div className={cn(
-        "flex-1 transition-all duration-300 ease-in-out",
-        isMenuOpen ? "ml-[300px] sm:ml-[361px]" : "ml-[60px]",
-        isMobile && !isMenuOpen && "ml-0"
-      )}>
-        <Header />
-        <main className="w-full">
-          {children}
-        </main>
+      {/* Main content area with centered positioning */}
+      <div 
+        className={cn(
+          "flex-1 transition-all duration-300 ease-in-out",
+          isMenuOpen ? "pl-[300px] sm:pl-[361px]" : "pl-[60px]",
+          isMobile && !isMenuOpen && "pl-0"
+        )}
+        style={{
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          maxWidth: '100%'
+        }}
+      >
+        <div className="max-w-[1600px] mx-auto">
+          <Header />
+          <main className="w-full">
+            {children}
+          </main>
+        </div>
       </div>
     </div>
   );

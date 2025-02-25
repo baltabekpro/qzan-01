@@ -1,67 +1,12 @@
+
 import { useState, useEffect } from "react";
 import { MessageSquare, User, Lock, Clock, CreditCard, File, Heart, Download, Plus, Bot, MessageCircle, Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useLocation, Link } from "react-router-dom";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
-const menuItems = [
-  { 
-    icon: Plus,
-    text: "Новый чат",
-    href: "/chat",
-    className: "text-[#9898BF] font-light",
-    mobileDialog: true
-  },
-  { 
-    icon: Bot,
-    text: "Чат с ИИ",
-    href: "/ai-chat",
-    mobileDialog: true
-  },
-  {
-    icon: MessageCircle,
-    text: "Тестовый чат",
-    href: "/test-chat",
-    mobileDialog: true
-  },
-  { 
-    icon: Clock,
-    text: "История запросов",
-    href: "/requests",
-    mobileDialog: true
-  },
-  { 
-    icon: User,
-    text: "Личный кабинет",
-    href: "/",
-    mobileDialog: true
-  },
-  { 
-    icon: MessageSquare,
-    text: "Уведомления",
-    href: "/notifications",
-    mobileDialog: true
-  },
-  { 
-    icon: Lock,
-    text: "Конфиденциальность",
-    href: "/privacy",
-    mobileDialog: true
-  },
-  { 
-    icon: CreditCard,
-    text: "Подписки и платежи",
-    href: "/subscriptions",
-    mobileDialog: true
-  },
-];
-
-const documentItems = [
-  { text: "Договор конфиденциальности", href: "/docs/confidentiality" },
-  { text: "Заявление на официальное раз", href: "/docs/official-statement" },
-  { text: "Список требуемых документов", href: "/docs/required-docs" },
-  { text: "Лист ожидания для ИП", href: "/docs/waiting-list" },
-];
+const menuItems = [/* ... keep existing code (menuItems array) */];
+const documentItems = [/* ... keep existing code (documentItems array) */];
 
 export function AppSidebar() {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
@@ -144,26 +89,31 @@ export function AppSidebar() {
     );
   };
 
+  if (isMobile && !isMenuOpen) {
+    return (
+      <button 
+        onClick={() => setIsMenuOpen(true)}
+        className="fixed top-4 left-4 z-50 hover:bg-gray-50 p-2 transition-colors rounded-md"
+      >
+        <Menu className="w-6 h-6 text-[#B3B3B3]" />
+      </button>
+    );
+  }
+
   return (
     <div className={cn(
       "h-full bg-white border-r border-gray-200 transition-all duration-300 flex-shrink-0 fixed left-0 top-0 z-50",
       isMenuOpen ? "w-[300px] sm:w-[361px]" : "w-[60px]",
-      isMobile && !isMenuOpen && "w-[50px]"
+      isMobile && "w-full md:w-[361px]"
     )}>
       <button 
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-        className={cn(
-          "hover:bg-gray-50 p-2 transition-colors z-10",
-          isMobile && !isMenuOpen ? "fixed top-4 left-4" : "absolute top-8 right-4"
-        )}
+        onClick={() => setIsMenuOpen(false)}
+        className="absolute top-8 right-4 hover:bg-gray-50 p-2 transition-colors z-10"
       >
         <Menu className="w-6 h-6 text-[#B3B3B3]" />
       </button>
 
-      <div className={cn(
-        "transition-opacity duration-300",
-        isMobile && !isMenuOpen && "hidden"
-      )}>
+      <div className="transition-opacity duration-300">
         <div className="flex items-center px-4 sm:px-[30px] pt-8">
           <div className={cn("transition-opacity duration-300", !isMenuOpen && "opacity-0")}>
             <h1 className="text-3xl sm:text-[46px] font-bold">Qzan</h1>

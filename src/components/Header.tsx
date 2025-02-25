@@ -2,8 +2,10 @@ import { Bell, Plus, Search, User, FileText, MessageSquare, Download } from "luc
 import { useState } from "react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
+
 export function Header() {
   const [showSearch, setShowSearch] = useState(false);
+
   const notifications = [{
     id: 1,
     title: "Уведомление о регистрации бизнеса",
@@ -38,6 +40,7 @@ export function Header() {
     isRead: true,
     bgColor: "#D9D9D9"
   }];
+
   const documents = [{
     id: 1,
     name: "Заявление.pdf",
@@ -51,12 +54,14 @@ export function Header() {
     name: "Заявление на участия.pdf",
     size: "890 KB"
   }];
-  return <header className="h-[64px] w-full border-b border-gray-100 bg-white relative">
+
+  return (
+    <header className="h-[64px] w-full border-b border-gray-100 bg-white relative">
       <div className="h-full flex items-center justify-between px-4 sm:px-[59px]">
         {/* Left side - User info */}
-        <div className={`flex items-center space-x-2 sm:space-x-8 transition-opacity duration-300 ${showSearch ? 'opacity-0 sm:opacity-100' : 'opacity-100'}`}>
+        <div className={`flex items-center space-x-2 sm:space-x-8 transition-all duration-300 ${showSearch ? 'opacity-0 sm:opacity-100' : 'opacity-100'}`}>
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 sm:w-12 sm:h-12 flex items-center justify-center mx-[46px] my-0">
+            <div className="w-8 h-8 sm:w-12 sm:h-12 flex items-center justify-center ml-8 sm:ml-0">
               <User className="w-6 h-6 sm:w-8 sm:h-8 text-[#202295]" />
             </div>
             <span className="text-[#202295] font-medium text-lg sm:text-2xl hidden sm:inline">Иван Иванов</span>
@@ -66,19 +71,46 @@ export function Header() {
         {/* Right side - Actions */}
         <div className="flex items-center space-x-2 sm:space-x-4">
           {/* Search - toggleable on mobile */}
-          <div className={`${showSearch ? 'absolute left-0 right-0 px-4 bg-white h-[64px] flex items-center z-10 animate-fade-in' : 'hidden sm:relative sm:flex'}`}>
-            <input type="text" placeholder="поиск" className="pl-10 pr-4 py-2 border border-gray-200 rounded-[33px] w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-[#202295] focus:border-transparent" />
+          <div 
+            className={`
+              transition-all duration-300 ease-out
+              ${showSearch 
+                ? 'absolute left-0 right-0 px-4 bg-white h-[64px] flex items-center z-10' 
+                : 'hidden sm:relative sm:flex'
+              }
+              ${showSearch ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}
+            `}
+          >
+            <input
+              type="text"
+              placeholder="поиск"
+              className="pl-10 pr-4 py-2 border border-gray-200 rounded-[33px] w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-[#202295] focus:border-transparent transition-all duration-300"
+            />
             <Search className="w-5 h-5 text-gray-400 absolute left-6 sm:left-3 top-1/2 transform -translate-y-1/2" />
-            {showSearch && <Button variant="ghost" size="sm" className="ml-2 sm:hidden animate-fade-in" onClick={() => setShowSearch(false)}>
+            {showSearch && (
+              <Button
+                variant="ghost"
+                size="sm"
+                className="ml-2 sm:hidden"
+                onClick={() => setShowSearch(false)}
+              >
                 Отмена
-              </Button>}
+              </Button>
+            )}
           </div>
           
           {/* Other actions with animation */}
-          <div className={`flex items-center space-x-2 sm:space-x-4 transition-opacity duration-300 ${showSearch ? 'opacity-0 sm:opacity-100' : 'opacity-100'}`}>
-            {!showSearch && <Button variant="ghost" size="icon" className="sm:hidden" onClick={() => setShowSearch(true)}>
+          <div className={`flex items-center space-x-2 sm:space-x-4 transition-all duration-300 ${showSearch ? 'opacity-0 sm:opacity-100 scale-95' : 'opacity-100 scale-100'}`}>
+            {!showSearch && (
+              <Button
+                variant="ghost"
+                size="icon"
+                className="sm:hidden"
+                onClick={() => setShowSearch(true)}
+              >
                 <Search className="w-5 h-5" />
-              </Button>}
+              </Button>
+            )}
 
             {/* Notifications */}
             <Sheet>
@@ -160,5 +192,6 @@ export function Header() {
           </div>
         </div>
       </div>
-    </header>;
+    </header>
+  );
 }

@@ -3,6 +3,7 @@ import { MessageSquare, User, Lock, Clock, CreditCard, File, Heart, Download, Pl
 import { cn } from "@/lib/utils";
 import { useLocation, Link } from "react-router-dom";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+
 const menuItems = [{
   icon: MessageSquare,
   text: "Входящие",
@@ -32,6 +33,7 @@ const menuItems = [{
   text: "Тестовый чат",
   href: "/test-chat"
 }];
+
 const documentItems = [{
   text: "Договор на оказание услуг",
   href: "/documents/1"
@@ -42,10 +44,12 @@ const documentItems = [{
   text: "Политика конфиденциальности",
   href: "/documents/3"
 }];
+
 export function AppSidebar() {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
   const location = useLocation();
+
   useEffect(() => {
     const checkScreenSize = () => {
       const isMobileView = window.innerWidth < 768;
@@ -60,6 +64,7 @@ export function AppSidebar() {
     window.addEventListener('resize', checkScreenSize);
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
+
   const MenuItem = ({
     item
   }) => {
@@ -73,11 +78,13 @@ export function AppSidebar() {
         </span>
       </Link>;
   };
+
   if (isMobile && !isMenuOpen) {
-    return <button onClick={() => setIsMenuOpen(true)} className="fixed top-4 left-4 z-50 hover:bg-gray-50 p-2 transition-colors rounded-md">
-        <Menu className="w-6 h-6 text-[#B3B3B3] px-0 my-0" />
+    return <button onClick={() => setIsMenuOpen(true)} className="fixed top-0 left-0 h-[64px] px-4 flex items-center hover:bg-gray-50 transition-colors">
+        <Menu className="w-6 h-6 text-[#B3B3B3]" />
       </button>;
   }
+
   return <div className={cn("h-full bg-white border-r border-gray-200 transition-all duration-300 flex-shrink-0 fixed left-0 top-0 z-50", isMenuOpen ? "w-[300px] sm:w-[361px]" : "w-[60px]", isMobile && "w-full md:w-[361px]")}>
       <button onClick={() => setIsMenuOpen(false)} className="absolute top-8 right-4 hover:bg-gray-50 p-2 transition-colors z-10">
         <Menu className="w-6 h-6 text-[#B3B3B3]" />

@@ -75,7 +75,7 @@ export function AppSidebar() {
   };
   if (isMobile && !isMenuOpen) {
     return <button onClick={() => setIsMenuOpen(true)} className="fixed top-4 left-4 z-50 hover:bg-gray-50 p-2 transition-colors rounded-md">
-        <Menu className="w-6 h-6 text-[#B3B3B3] px-0 my-[39px]" />
+        <Menu className="w-6 h-6 text-[#B3B3B3] px-0 my-0" />
       </button>;
   }
   return <div className={cn("h-full bg-white border-r border-gray-200 transition-all duration-300 flex-shrink-0 fixed left-0 top-0 z-50", isMenuOpen ? "w-[300px] sm:w-[361px]" : "w-[60px]", isMobile && "w-full md:w-[361px]")}>

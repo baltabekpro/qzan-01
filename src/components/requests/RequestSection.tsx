@@ -66,7 +66,7 @@ export const RequestSection = () => {
       <div className="p-6">
         <div className="flex items-center justify-between mb-6">
           <h3 className="font-medium">Запросы</h3>
-          <button className="text-sm text-[#4338ca]">перейти к началу</button>
+          
         </div>
         {renderContent()}
       </div>

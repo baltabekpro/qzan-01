@@ -1,77 +1,62 @@
 import { Bell, Plus, Search, User, FileText, MessageSquare, Download } from "lucide-react";
 import { useState } from "react";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-
 export function Header() {
   const [showSearch, setShowSearch] = useState(false);
-
-  const notifications = [
-    {
-      id: 1,
-      title: "Уведомление о регистрации бизнеса",
-      description: "Уважаемый (ая) уведомляем вас об успешном..",
-      isNew: true,
-      bgColor: "#D9D9D9"
-    }, {
-      id: 2,
-      title: "Уведомление об изменении в правилах..",
-      description: "Уважаемый (ая) уведомляем вас об успешном..",
-      isNew: true,
-      bgColor: "#D9D9D9"
-    }, {
-      id: 3,
-      title: "Сообщение от НУК о регистрации логотипа в...",
-      description: "Уважаемый (ая) уведомляем вас об успешном..",
-      isNew: false,
-      isRead: true,
-      bgColor: "#D9D9D9"
-    }, {
-      id: 4,
-      title: "Успешная подача заявления в ЦОН..",
-      description: "Уважаемый (ая) уведомляем вас об успешном..",
-      isNew: false,
-      isRead: true,
-      bgColor: "#D9D9D9"
-    }, {
-      id: 5,
-      title: "Вы завершили регистрацию на платформе..",
-      description: "Уважаемый (ая) уведомляем вас об успешном..",
-      isNew: false,
-      isRead: true,
-      bgColor: "#D9D9D9"
-    }
-  ];
-
-  const documents = [
-    {
-      id: 1,
-      name: "Заявление.pdf",
-      size: "245 KB"
-    }, {
-      id: 2,
-      name: "Разрешение на выставление.pdf",
-      size: "1.2 MB"
-    }, {
-      id: 3,
-      name: "Заявление на участия.pdf",
-      size: "890 KB"
-    }
-  ];
-
-  return (
-    <header className="h-[64px] w-full border-b border-gray-100 bg-white relative">
+  const notifications = [{
+    id: 1,
+    title: "Уведомление о регистрации бизнеса",
+    description: "Уважаемый (ая) уведомляем вас об успешном..",
+    isNew: true,
+    bgColor: "#D9D9D9"
+  }, {
+    id: 2,
+    title: "Уведомление об изменении в правилах..",
+    description: "Уважаемый (ая) уведомляем вас об успешном..",
+    isNew: true,
+    bgColor: "#D9D9D9"
+  }, {
+    id: 3,
+    title: "Сообщение от НУК о регистрации логотипа в...",
+    description: "Уважаемый (ая) уведомляем вас об успешном..",
+    isNew: false,
+    isRead: true,
+    bgColor: "#D9D9D9"
+  }, {
+    id: 4,
+    title: "Успешная подача заявления в ЦОН..",
+    description: "Уважаемый (ая) уведомляем вас об успешном..",
+    isNew: false,
+    isRead: true,
+    bgColor: "#D9D9D9"
+  }, {
+    id: 5,
+    title: "Вы завершили регистрацию на платформе..",
+    description: "Уважаемый (ая) уведомляем вас об успешном..",
+    isNew: false,
+    isRead: true,
+    bgColor: "#D9D9D9"
+  }];
+  const documents = [{
+    id: 1,
+    name: "Заявление.pdf",
+    size: "245 KB"
+  }, {
+    id: 2,
+    name: "Разрешение на выставление.pdf",
+    size: "1.2 MB"
+  }, {
+    id: 3,
+    name: "Заявление на участия.pdf",
+    size: "890 KB"
+  }];
+  return <header className="h-[64px] w-full border-b border-gray-100 bg-white relative">
       <div className="h-full flex items-center justify-between px-4 sm:px-[59px]">
         {/* Left side - User info */}
         <div className={`flex items-center space-x-2 sm:space-x-8 transition-opacity duration-300 ${showSearch ? 'opacity-0 sm:opacity-100' : 'opacity-100'}`}>
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 sm:w-12 sm:h-12 flex items-center justify-center">
+            <div className="w-8 h-8 sm:w-12 sm:h-12 flex items-center justify-center mx-[46px] my-0">
               <User className="w-6 h-6 sm:w-8 sm:h-8 text-[#202295]" />
             </div>
             <span className="text-[#202295] font-medium text-lg sm:text-2xl hidden sm:inline">Иван Иванов</span>
@@ -81,41 +66,19 @@ export function Header() {
         {/* Right side - Actions */}
         <div className="flex items-center space-x-2 sm:space-x-4">
           {/* Search - toggleable on mobile */}
-          <div className={`${
-            showSearch 
-              ? 'absolute left-0 right-0 px-4 bg-white h-[64px] flex items-center z-10 animate-fade-in' 
-              : 'hidden sm:relative sm:flex'
-          }`}>
-            <input
-              type="text"
-              placeholder="поиск"
-              className="pl-10 pr-4 py-2 border border-gray-200 rounded-[33px] w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-[#202295] focus:border-transparent"
-            />
+          <div className={`${showSearch ? 'absolute left-0 right-0 px-4 bg-white h-[64px] flex items-center z-10 animate-fade-in' : 'hidden sm:relative sm:flex'}`}>
+            <input type="text" placeholder="поиск" className="pl-10 pr-4 py-2 border border-gray-200 rounded-[33px] w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-[#202295] focus:border-transparent" />
             <Search className="w-5 h-5 text-gray-400 absolute left-6 sm:left-3 top-1/2 transform -translate-y-1/2" />
-            {showSearch && (
-              <Button
-                variant="ghost"
-                size="sm"
-                className="ml-2 sm:hidden animate-fade-in"
-                onClick={() => setShowSearch(false)}
-              >
+            {showSearch && <Button variant="ghost" size="sm" className="ml-2 sm:hidden animate-fade-in" onClick={() => setShowSearch(false)}>
                 Отмена
-              </Button>
-            )}
+              </Button>}
           </div>
           
           {/* Other actions with animation */}
           <div className={`flex items-center space-x-2 sm:space-x-4 transition-opacity duration-300 ${showSearch ? 'opacity-0 sm:opacity-100' : 'opacity-100'}`}>
-            {!showSearch && (
-              <Button
-                variant="ghost"
-                size="icon"
-                className="sm:hidden"
-                onClick={() => setShowSearch(true)}
-              >
+            {!showSearch && <Button variant="ghost" size="icon" className="sm:hidden" onClick={() => setShowSearch(true)}>
                 <Search className="w-5 h-5" />
-              </Button>
-            )}
+              </Button>}
 
             {/* Notifications */}
             <Sheet>
@@ -133,23 +96,19 @@ export function Header() {
                   </SheetTitle>
                 </SheetHeader>
                 <div className="overflow-auto">
-                  {notifications.map(notification => (
-                    <div key={notification.id} className="flex items-start space-x-3 px-4 sm:px-6 py-4 hover:bg-gray-50 transition-colors">
+                  {notifications.map(notification => <div key={notification.id} className="flex items-start space-x-3 px-4 sm:px-6 py-4 hover:bg-gray-50 transition-colors">
                       <MessageSquare className={`w-5 h-5 shrink-0 ${notification.isNew ? 'text-[#4338ca] fill-[#4338ca]' : 'text-gray-400 fill-gray-400'}`} />
                       <div className="min-w-0 flex-1">
                         <p className="font-medium text-gray-900 text-sm sm:text-base truncate">{notification.title}</p>
                         <p className="text-xs sm:text-sm text-gray-500 mt-0.5 truncate">{notification.description}</p>
                       </div>
-                      {notification.isRead && (
-                        <div className="flex items-center gap-2">
+                      {notification.isRead && <div className="flex items-center gap-2">
                           <span className="text-xs text-gray-400 shrink-0">прочитано</span>
                           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B3B3B3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <polyline points="20 6 9 17 4 12" />
                           </svg>
-                        </div>
-                      )}
-                    </div>
-                  ))}
+                        </div>}
+                    </div>)}
                 </div>
               </SheetContent>
             </Sheet>
@@ -172,8 +131,7 @@ export function Header() {
                   </SheetTitle>
                 </SheetHeader>
                 <div className="overflow-auto">
-                  {documents.map((doc, index) => (
-                    <div key={doc.id} className={`flex items-center justify-between px-4 sm:px-6 py-4 ${index !== documents.length - 1 ? 'border-b border-gray-100' : ''}`}>
+                  {documents.map((doc, index) => <div key={doc.id} className={`flex items-center justify-between px-4 sm:px-6 py-4 ${index !== documents.length - 1 ? 'border-b border-gray-100' : ''}`}>
                       <div className="flex items-center space-x-3">
                         <FileText className="w-5 h-5 text-[#4338ca]" />
                         <span className="text-sm sm:text-base text-gray-900">{doc.name}</span>
@@ -190,8 +148,7 @@ export function Header() {
                           <Download className="w-4 h-4 text-gray-400" />
                         </button>
                       </div>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
               </SheetContent>
             </Sheet>
@@ -203,6 +160,5 @@ export function Header() {
           </div>
         </div>
       </div>
-    </header>
-  );
+    </header>;
 }

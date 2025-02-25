@@ -1,12 +1,61 @@
-
 import { useState, useEffect } from "react";
 import { MessageSquare, User, Lock, Clock, CreditCard, File, Heart, Download, Plus, Bot, MessageCircle, Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useLocation, Link } from "react-router-dom";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
-const menuItems = [/* ... keep existing code (menuItems array) */];
-const documentItems = [/* ... keep existing code (documentItems array) */];
+const menuItems = [
+  {
+    icon: MessageSquare,
+    text: "Входящие",
+    href: "/",
+  },
+  {
+    icon: User,
+    text: "Мой профиль",
+    href: "/profile",
+  },
+  {
+    icon: Lock,
+    text: "Пароли",
+    href: "/passwords",
+  },
+  {
+    icon: Clock,
+    text: "История",
+    href: "/history",
+  },
+  {
+    icon: CreditCard,
+    text: "Подписки",
+    href: "/subscriptions",
+  },
+  {
+    icon: Bot,
+    text: "AI Чат",
+    href: "/ai-chat",
+  },
+  {
+    icon: MessageCircle,
+    text: "Тестовый чат",
+    href: "/test-chat",
+  }
+];
+
+const documentItems = [
+  {
+    text: "Договор на оказание услуг",
+    href: "/documents/1"
+  },
+  {
+    text: "Пользовательское соглашение",
+    href: "/documents/2"
+  },
+  {
+    text: "Политика конфиденциальности",
+    href: "/documents/3"
+  }
+];
 
 export function AppSidebar() {
   const [isMenuOpen, setIsMenuOpen] = useState(true);

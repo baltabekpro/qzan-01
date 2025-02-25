@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { MessageSquare, User, Lock, Clock, CreditCard, File, Heart, Download, Plus, Bot, MessageCircle, Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -83,36 +84,6 @@ export function AppSidebar() {
       return null;
     }
 
-    if (isMobile) {
-      return (
-        <Dialog>
-          <DialogTrigger asChild>
-            <div className={cn(
-              "h-[45px] flex items-center px-5 hover:bg-gray-50 cursor-pointer group border-l-4 border-transparent",
-              location.pathname === item.href && "bg-[#202295] border-white"
-            )}>
-              <item.icon className={cn(
-                "w-[20px] h-[20px] stroke-[2.5px]",
-                location.pathname === item.href ? "text-white" : "text-[#B3B3B3]",
-                "group-hover:text-[#202295]"
-              )} />
-              <span className="ml-3 text-[16px] group-hover:text-[#202295]">
-                {item.text}
-              </span>
-            </div>
-          </DialogTrigger>
-          <DialogContent className="sm:max-w-[90%] w-[90%] p-0">
-            <div className="p-6">
-              <h3 className="text-xl font-semibold mb-4">{item.text}</h3>
-              <div className="space-y-4">
-                <p className="text-gray-600">Содержимое для {item.text}</p>
-              </div>
-            </div>
-          </DialogContent>
-        </Dialog>
-      );
-    }
-
     return (
       <Link
         to={item.href}
@@ -122,6 +93,7 @@ export function AppSidebar() {
           location.pathname === item.href && "bg-[#202295] border-white",
           item.className
         )}
+        onClick={() => isMobile && setIsMenuOpen(false)}
       >
         <item.icon className={cn(
           "w-[20px] h-[20px] stroke-[2.5px] group-hover:text-[#202295]",

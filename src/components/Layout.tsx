@@ -30,20 +30,14 @@ export function Layout({ children }: LayoutProps) {
     <div className="flex min-h-screen w-full">
       <AppSidebar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       
-      {/* Main content area with centered positioning */}
       <div 
         className={cn(
-          "flex-1 transition-all duration-300 ease-in-out",
+          "flex-1 min-h-screen",
           isMenuOpen ? "pl-[300px] sm:pl-[361px]" : "pl-[60px]",
           isMobile && !isMenuOpen && "pl-0"
         )}
-        style={{
-          marginLeft: 'auto',
-          marginRight: 'auto',
-          maxWidth: '100%'
-        }}
       >
-        <div className="max-w-[1600px] mx-auto">
+        <div className="max-w-[1600px] w-full mx-auto px-4">
           <Header />
           <main className="w-full">
             {children}

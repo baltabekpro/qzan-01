@@ -98,7 +98,7 @@ export function AppSidebar({
 
         <div className={cn("mt-12", (isMobile || !isMenuOpen) && "hidden")}>
           <div className="flex items-center px-5 mb-4">
-            <File className="w-[25px] h-[25px] text-[#000000] bg-[9898BF] bg-[#9898bf]" />
+            <File className="w-[25px] h-[25px] text-[#000000] bg-[9898BF] bg-[#9898bf]/0" />
             <span className="ml-3 font-semibold text-[9898BF] text-[#9898bf]">
               Документы/Файлы
             </span>

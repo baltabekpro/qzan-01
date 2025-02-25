@@ -18,8 +18,6 @@ export function Layout({ children }: LayoutProps) {
       setIsMobile(isMobileView);
       if (isMobileView) {
         setIsMenuOpen(false);
-      } else if (window.innerWidth > 1024) {
-        setIsMenuOpen(true);
       }
     };
     
@@ -30,13 +28,13 @@ export function Layout({ children }: LayoutProps) {
 
   return (
     <div className="flex min-h-screen w-full">
-      <AppSidebar />
+      <AppSidebar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       
-      {/* Main content area with responsive margin */}
+      {/* Main content area with responsive margin and transition */}
       <div className={cn(
-        "flex-1 w-full transition-all duration-300",
-        isMobile && !isMenuOpen ? "ml-0" : "ml-[60px] sm:ml-[100px] lg:ml-[361px]",
-        isMobile && !isMenuOpen ? "w-full" : "w-[calc(100%-60px)] sm:w-[calc(100%-100px)] lg:w-[calc(100%-361px)]"
+        "flex-1 transition-all duration-300 ease-in-out",
+        isMenuOpen ? "ml-[300px] sm:ml-[361px]" : "ml-[60px]",
+        isMobile && !isMenuOpen && "ml-0"
       )}>
         <Header />
         <main className="w-full">

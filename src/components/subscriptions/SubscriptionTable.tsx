@@ -39,7 +39,7 @@ export function SubscriptionTable() {
             <div className="text-xs font-medium text-[#B3B3B3]">Статус</div>
             <div className="text-xs font-medium text-[#B3B3B3]">Стоимость</div>
           </div>
-          <div className="max-h-80 overflow-y-auto">
+          <div>
             <div className="space-y-6">
               {subscriptions.map((subscription) => (
                 <div key={subscription.id} className="grid grid-cols-4 gap-4 items-center">

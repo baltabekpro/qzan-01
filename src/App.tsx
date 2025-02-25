@@ -17,7 +17,8 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <div className="fixed inset-0 bg-[#F5F7FA]">
+        {/* Removed "fixed" class to allow proper scrolling and positioning */}
+        <div className="min-h-screen w-full bg-[#F5F7FA] overflow-x-hidden">
           <Toaster />
           <Sonner />
           <BrowserRouter>

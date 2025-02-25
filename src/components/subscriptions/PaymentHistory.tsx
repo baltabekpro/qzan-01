@@ -53,7 +53,7 @@ export function PaymentHistory() {
             <div className="text-xs font-medium text-[#B3B3B3]">Стоимость</div>
             <div className="text-xs font-medium text-[#B3B3B3]">Статус</div>
           </div>
-          <div className="max-h-80 overflow-y-auto">
+          <div>
             <div className="space-y-6 divide-y divide-[#D9D9D9]">
               {payments.map((payment, index) => (
                 <div key={`${payment.id}-${index}`} className="pt-6 first:pt-0">

@@ -1,5 +1,4 @@
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MessageSquare, User, Lock, Clock, CreditCard, File, Heart, Download, Plus, Bot, MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useLocation, Link } from "react-router-dom";
@@ -57,21 +56,44 @@ const documentItems = [
 
 export function AppSidebar() {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
   const location = useLocation();
+
+  // Check for mobile screen on resize
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 768);
+      if (window.innerWidth < 768) {
+        setIsMenuOpen(false);
+      } else if (window.innerWidth > 1024) {
+        setIsMenuOpen(true);
+      }
+    };
+    
+    // Initial check
+    checkScreenSize();
+    
+    // Add event listener
+    window.addEventListener('resize', checkScreenSize);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
 
   return (
     <div className={cn(
-      "w-[361px] h-[982px] bg-white border border-black transition-all duration-300",
-      !isMenuOpen && "w-[100px]"
+      "h-full bg-white border border-black transition-all duration-300 flex-shrink-0",
+      isMenuOpen ? "w-[300px] sm:w-[361px]" : "w-[80px] sm:w-[100px]",
+      isMobile && !isMenuOpen && "w-[60px]"
     )}>
-      <div className="flex items-center justify-between px-[30px] pt-8">
+      <div className="flex items-center justify-between px-4 sm:px-[30px] pt-8">
         <div className={cn("transition-opacity duration-300", !isMenuOpen && "opacity-0")}>
-          <h1 className="text-[46px] font-bold">Qzan</h1>
-          <p className="text-[16px] text-[#B3B3B3]">qzan</p>
+          <h1 className="text-3xl sm:text-[46px] font-bold">Qzan</h1>
+          <p className="text-[14px] sm:text-[16px] text-[#B3B3B3]">qzan</p>
         </div>
         <button 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="hover:bg-gray-50 p-2 transition-colors"
+          className="hover:bg-gray-50 p-2 transition-colors z-10"
         >
           <svg 
             width="29" 
@@ -122,8 +144,11 @@ export function AppSidebar() {
         ))}
       </nav>
 
-      {/* Documents Section */}
-      <div className="mt-12">
+      {/* Documents Section - Hide completely on very small screens when menu is closed */}
+      <div className={cn(
+        "mt-12",
+        isMobile && !isMenuOpen && "hidden"
+      )}>
         <div className={cn(
           "flex items-center px-5 mb-4",
           !isMenuOpen && "px-2 justify-center"
@@ -137,24 +162,19 @@ export function AppSidebar() {
           </span>
         </div>
 
-        {documentItems.map((item, index) => (
+        {isMenuOpen && documentItems.map((item, index) => (
           <Link
             key={index}
             to={item.href}
             className="h-[45px] flex items-center px-5 hover:bg-gray-50 cursor-pointer group relative"
           >
-            <span className={cn(
-              "text-[17px] text-[#000000]",
-              !isMenuOpen && "opacity-0"
-            )}>
+            <span className="text-[17px] text-[#000000]">
               {item.text}
             </span>
-            {isMenuOpen && (
-              <div className="absolute right-5 flex items-center space-x-2">
-                <Heart className="w-[18px] h-[18px] text-[#B3B3B3] hover:text-[#202295]" />
-                <Download className="w-[18px] h-[18px] text-[#B3B3B3] hover:text-[#202295]" />
-              </div>
-            )}
+            <div className="absolute right-5 flex items-center space-x-2">
+              <Heart className="w-[18px] h-[18px] text-[#B3B3B3] hover:text-[#202295]" />
+              <Download className="w-[18px] h-[18px] text-[#B3B3B3] hover:text-[#202295]" />
+            </div>
           </Link>
         ))}
       </div>

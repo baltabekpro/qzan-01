@@ -66,7 +66,7 @@ export default function Index() {
       </div>
 
       {/* Main content */}
-      <div className="px-4 sm:px-[59px] py-[40px] h-screen overflow-y-auto">
+      <div className="px-4 sm:px-[59px] py-[40px] h-screen">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div className="space-y-6">
             <UserProfile />

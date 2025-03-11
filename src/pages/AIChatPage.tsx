@@ -4,9 +4,9 @@ import { File, Key, CheckSquare, PaperclipIcon, ArrowRightCircle } from "lucide-
 
 export default function AIChatPage() {
   return (
-    <div className="min-h-screen w-full bg-[#F5F7FA]">
+    <div className="min-h-screen w-full bg-[#F5F7FA] relative">
       <div className="flex-1 h-full flex flex-col max-w-[1559px] mx-auto">
-        <div className="flex-1 flex flex-col items-center justify-center p-4">
+        <div className="flex-1 flex flex-col items-center justify-center p-4 pb-24">
           <div className="w-full max-w-[814px] mx-auto">
             <h1 className="font-roboto text-[48px] leading-[56px] font-semibold text-center text-black mb-3">
               Как я могу вам помочь?
@@ -34,16 +34,20 @@ export default function AIChatPage() {
                 </p>
                 </Card>
             </div>
-            <div className="absolute bottom-10 w-[814px] h-[56px] flex items-center bg-white rounded-[9px] px-3 mx-auto">
-              <PaperclipIcon className="w-[28px] h-[28px] text-[#202295] ml-2" />
-              <input
-              type="text"
-              placeholder="Составь договор NDA для сотрудника компании"
-              className="flex-1 h-full px-4 text-[16px] font-light text-[#9898BF] focus:outline-none font-roboto"
-              />
-              <ArrowRightCircle className="w-[28px] h-[28px] text-[#202295] mr-2" />
-            </div>
           </div>
+        </div>
+      </div>
+      
+      {/* Fixed input at bottom, matched with the ChatContainer approach */}
+      <div className="fixed bottom-10 inset-x-0 flex justify-center">
+        <div className="w-full max-w-[814px] h-[56px] flex items-center bg-white rounded-[9px] px-3 mx-4">
+          <PaperclipIcon className="w-[28px] h-[28px] text-[#202295] ml-2" />
+          <input
+            type="text"
+            placeholder="Составь договор NDA для сотрудника компании"
+            className="flex-1 h-full px-4 text-[16px] font-light text-[#9898BF] focus:outline-none font-roboto"
+          />
+          <ArrowRightCircle className="w-[28px] h-[28px] text-[#202295] mr-2" />
         </div>
       </div>
     </div>

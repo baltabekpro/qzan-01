@@ -1,3 +1,4 @@
+@import './styles/globals.css';
 
 @tailwind base;
 @tailwind components;
@@ -54,4 +55,34 @@
     transform: scale(1);
     opacity: 1;
   }
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pageExit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+.page-enter {
+  animation: pageEnter 0.2s ease forwards;
+}
+
+.page-exit {
+  animation: pageExit 0.2s ease forwards;
 }

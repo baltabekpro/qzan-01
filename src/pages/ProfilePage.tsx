@@ -39,12 +39,14 @@ export default function ProfilePage() {
       <div className="min-h-screen w-full bg-[#F5F7FA]">
         <div className="flex justify-center px-4 sm:px-[59px] py-6 sm:py-[40px] relative">
           {/* Link back to AI Chat in top right */}
-          <Link to="/ai-chat" className="absolute right-8 top-8">
-            <Button variant="ghost" className="flex items-center gap-2">
-              <MessageCircle className="h-5 w-5" />
-              Вернуться в чат
-            </Button>
-          </Link>
+          <div className="absolute right-8 top-8 z-10">
+            <Link to="/ai-chat" className="flex items-center gap-2">
+              <Button variant="ghost" className="flex items-center gap-2">
+                <MessageCircle className="h-5 w-5" />
+                Вернуться в чат
+              </Button>
+            </Link>
+          </div>
 
           <div className="w-full max-w-[1200px]">
             <h1 className="text-3xl font-bold mb-6 flex items-center">

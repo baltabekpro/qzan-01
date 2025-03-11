@@ -1,3 +1,4 @@
+
 import { useState } from 'react'
 import { Toaster } from "@/components/ui/toaster"
 import { Toaster as Sonner } from "@/components/ui/sonner"
@@ -9,10 +10,10 @@ import Index from "./pages/Index"
 import SubscriptionsPage from "./pages/SubscriptionsPage"
 import AIChatPage from "./pages/AIChatPage"
 import TestChatPage from "./pages/TestChatPage"
+import ProfilePage from "./pages/ProfilePage"
 import NotFound from "./pages/NotFound"
 import "./App.css"
 import { Layout } from "./components/Layout"
-import { Header } from './components/Header'
 import { AppSidebar } from './components/AppSidebar'
 
 const queryClient = new QueryClient()
@@ -37,7 +38,7 @@ function App() {
               setIsMenuOpen={setIsMenuOpen} 
               hideMenuButton={isContractFullscreen}
             />
-            <div className="flex-1 transition-all duration-300 overflow-hidden">
+            <div className="flex-1 transition-all duration-300 overflow-y-auto">
               <Toaster />
               <Sonner />
               <AnimatePresence mode="wait" initial={false}>
@@ -45,6 +46,7 @@ function App() {
                   <Route path="/" element={<Index />} />
                   <Route path="/subscriptions" element={<SubscriptionsPage />} />
                   <Route path="/ai-chat" element={<AIChatPage />} />
+                  <Route path="/profile" element={<ProfilePage />} />
                   <Route path="/test-chat" element={<TestChatPage onFullscreenChange={setIsContractFullscreen} />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
